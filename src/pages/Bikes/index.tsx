@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchAllBikes} from "../../store/bike/actions"
 import { useDispatch, useSelector } from "react-redux"
 
+import Map from "../../components/Map"
 import { selectBikes } from "../../store/bike/selectors"
 import { Container, Button, Form, Col } from "react-bootstrap";
 
@@ -32,7 +33,7 @@ export default function Bikes() {
         <div>
             <Container>
       <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-        <h1 className="mt-5 mb-5">Pick Bike</h1>
+        <h1 className="mt-5 mb-5">Reserve a Bike</h1>
         <Form.Group controlId="formBike">
           <Form.Label>Bikes</Form.Label>
           <Form.Control as="select">
@@ -44,10 +45,12 @@ export default function Bikes() {
         </Form>
         </Container>
         <Form.Group className="mt-5">
-          {/* <Button variant="primary" type="submit" onClick={bikeHandler}>
+          <Button variant="primary" type="submit">
           Bike Desu~
-          </Button> */}
+          </Button>
         </Form.Group>
+
+        <Map bikes={bikes}/>
         </div>
     )
 }
