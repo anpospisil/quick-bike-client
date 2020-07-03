@@ -1,5 +1,6 @@
 // import { User, Token } from "../User"
 import { Bike } from "./Bike"
+import { Reservation } from "./Reservation"
 
 
 // USER ACTION TYPES
@@ -43,6 +44,18 @@ export interface SetBikeAction {
 export type BikeActionTypes = SetBikeAction 
 
 
-export type AppActions = BikeActionTypes
+//RESERVATION ACTION TYPES
 
-// ** put this up there ^^ UserActionTypes
+export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS"
+
+export interface SetReservationAction {
+    type: typeof RESERVATION_SUCCESS;
+    reservation: Reservation;
+} 
+
+export type ReservationActionTypes = SetReservationAction
+
+
+export type AppActions = BikeActionTypes | ReservationActionTypes
+
+// ** put this back up there when implementing user login ^^ UserActionTypes

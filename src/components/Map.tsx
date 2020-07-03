@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState, MouseEvent } from "react";
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
+  InfoWindow,
 } from "react-google-maps";
-import { useSelector } from "react-redux"
-import { selectBikes } from "../store/bike/selectors"
 import { Bike } from "../types/Bike"
+
+export default function Map(props: any){
+const [selected, setSelected] = useState(null)
 
 const MyMapComponent = withScriptjs(
   withGoogleMap((props: { bikes: Bike[]; }) => (
@@ -15,21 +17,37 @@ const MyMapComponent = withScriptjs(
      defaultZoom={12} 
      defaultCenter={{ lat: 52.379922, lng: 4.899838 }}
     >
-      
        {props.bikes.map((bike) => {
           const { latitude, longitude } = bike;
           return (
             <Marker
               key={bike.id}
               position={{ lat: latitude, lng: longitude }}
+              title={bike.name}
+              animation={google.maps.Animation.DROP}
+              onClick={() => {
+                setSelected(selected);
+             }}
             />
           );
         })}
+        {selected && (
+   <InfoWindow
+      onCloseClick={() => {
+         setSelected(null);
+      }}
+      position={{
+          // @ts-ignore
+         lat: selected.latitude,
+         // @ts-ignore
+         lng: selected.longitude
+      }}
+   >
+   </InfoWindow>
+)}
     </GoogleMap>
   ))
 );
-
-export default (props: { bikes: Bike[];}) => {
 
   return (<MyMapComponent
     //@ts-ignore
