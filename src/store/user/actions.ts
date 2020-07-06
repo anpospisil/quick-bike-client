@@ -1,7 +1,7 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
 import { AppActions } from "../../types/actions";
-import { Token } from "../../types/User"
+import { Token } from "../../types/User";
 import { Dispatch } from "redux";
 import { AppState } from "../index";
 import { selectToken, selectUser } from "./selectors";
@@ -16,66 +16,65 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
 
-const loginSuccess = (Token:Token): AppActions => {
+const loginSuccess = (Token: Token): AppActions => {
   return {
     type: LOGIN_SUCCESS,
-    token: Token
+    token: Token,
   };
 };
 
-const tokenStillValid = (Token:Token): AppActions => ({
+const tokenStillValid = (Token: Token): AppActions => ({
   type: TOKEN_STILL_VALID,
-  token: Token
+  token: Token,
 });
 
 export const logOut = () => ({ type: LOG_OUT });
 
-
-export const signUp = (name, email, password) => {
-  return async (dispatch, getState) => {
+export const signUp = (name: string, email: string, password: string) => {
+  return async (dispatch: Dispatch, getState: () => AppState) => {
     dispatch(appLoading());
     try {
       const response = await axios.post(`${apiUrl}/signup`, {
         name,
         email,
-        password
+        password,
       });
 
       dispatch(loginSuccess(response.data));
-      dispatch(showMessageWithTimeout("success", true, "account created"));
+      // dispatch(showMessageWithTimeout("success", true, "account created"));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         // console.log(error.response.data.message);
-        dispatch(setMessage("danger", true, error.response.data.message));
+        // dispatch(setMessage("danger", true, error.response.data.message));
       } else {
         // console.log(error.message);
-        dispatch(setMessage("danger", true, error.message));
+        // dispatch(setMessage("danger", true, error.message));
       }
       dispatch(appDoneLoading());
     }
   };
 };
 
-export const login = (email, password) => {
-  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+export const login = (email:string, password:string) => {
+  return async (dispatch: Dispatch, getState: () => AppState) => {
     dispatch(appLoading());
     try {
       const response = await axios.post(`${apiUrl}/login`, {
         email,
-        password
+        password,
       });
 
       dispatch(loginSuccess(response.data));
-      dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
+      // dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
         // console.log(error.response.data.message);
-        dispatch(setMessage("danger", true, error.response.data.message));
+        // dispatch(setMessage("danger", true, error.response.data.message));
       } else {
         // console.log(error.message);
-        dispatch(setMessage("danger", true, error.message));
+        // dispatch(setMessage("danger", true, error.message));
       }
       dispatch(appDoneLoading());
     }
@@ -83,7 +82,7 @@ export const login = (email, password) => {
 };
 
 export const getUserWithStoredToken = () => {
-  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+  return async (dispatch: Dispatch, getState: () => AppState) => {
     // get token from the state
     const token = selectToken(getState());
 
@@ -95,7 +94,7 @@ export const getUserWithStoredToken = () => {
       // if we do have a token,
       // check wether it is still valid or if it is expired
       const response = await axios.get(`${apiUrl}/me`, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       // token is still valid
