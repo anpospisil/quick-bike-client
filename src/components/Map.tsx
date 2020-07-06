@@ -1,15 +1,14 @@
-import React, { useState, MouseEvent } from "react";
+import React, { useState } from "react";
 import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
   Marker,
-  InfoWindow,
 } from "react-google-maps";
 import { Bike } from "../types/Bike"
 
 export default function Map(props: any){
-const [selected, setSelected] = useState(null)
+const [selectedBike, setSelectedBike] = useState(null)
 
 const MyMapComponent = withScriptjs(
   withGoogleMap((props: { bikes: Bike[]; }) => (
@@ -25,26 +24,12 @@ const MyMapComponent = withScriptjs(
               position={{ lat: latitude, lng: longitude }}
               title={bike.name}
               animation={google.maps.Animation.DROP}
-              onClick={() => {
-                setSelected(selected);
-             }}
+            //   onClick={() => {
+            //     setSelectedBike(bike);
+            //  }}
             />
           );
         })}
-        {selected && (
-   <InfoWindow
-      onCloseClick={() => {
-         setSelected(null);
-      }}
-      position={{
-          // @ts-ignore
-         lat: selected.latitude,
-         // @ts-ignore
-         lng: selected.longitude
-      }}
-   >
-   </InfoWindow>
-)}
     </GoogleMap>
   ))
 );
