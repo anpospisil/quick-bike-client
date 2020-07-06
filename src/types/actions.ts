@@ -1,5 +1,29 @@
 import { User, Token } from "./User"
+import { Bike } from "./Bike"
+import { Reservation } from "./Reservation"
 
+//APPSTATE ACTION TYPES
+export const APP_LOADING = "APP_LOADING";
+export const APP_DONE_LOADING = "APP_DONE_LOADING";
+export const SET_MESSAGE = "SET_MESSAGE";
+export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
+
+export interface appLoading{
+     type: typeof APP_LOADING
+}
+
+export interface appDoneLoading{
+     type: typeof APP_DONE_LOADING
+}
+
+export interface clearMessage{
+     type: typeof CLEAR_MESSAGE
+}
+
+export type AppStateActionTypes = appLoading | appDoneLoading | clearMessage
+
+
+// USER ACTION TYPES
 export const DISPLAY_USER_INFO = "DISPLAY_USER_INFO"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
@@ -28,4 +52,29 @@ export interface UserLogOutAction {
 
 export type UserActionTypes = DisplayUserAction | UserLogInAction | TokenValidAction | UserLogOutAction;
 
-export type AppActions = UserActionTypes
+
+//BIKE ACTION TYPES
+export const FETCH_BIKES = "FETCH_BIKES"
+
+export interface SetBikeAction {
+    type: typeof FETCH_BIKES;
+    bikes: Bike[];
+} 
+
+export type BikeActionTypes = SetBikeAction 
+
+
+//RESERVATION ACTION TYPES
+
+export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS"
+
+export interface SetReservationAction {
+    type: typeof RESERVATION_SUCCESS;
+    reservation: Reservation;
+} 
+
+export type ReservationActionTypes = SetReservationAction
+
+
+// ALL TOGETHER
+export type AppActions = BikeActionTypes | ReservationActionTypes | UserActionTypes | AppStateActionTypes
