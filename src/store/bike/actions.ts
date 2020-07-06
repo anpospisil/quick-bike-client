@@ -3,7 +3,7 @@ import axios from "axios";
 import { Bike } from "../../types/Bike"
 import { AppActions } from "../../types/actions";
 import { Dispatch } from "redux";
-import { AppState } from "..";
+import { AppState } from "../index";
 
 export const bikesFetched = (Bikes: Bike[]): AppActions =>  ({
     type: "FETCH_BIKES",
