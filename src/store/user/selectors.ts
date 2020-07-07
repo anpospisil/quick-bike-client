@@ -1,3 +1,8 @@
-export const selectToken = (state:any) => state.user.token;
-export const selectUser = (state:any) => state.user;
-export const selectMyHomepage = (state:any) => state.user.homepage;
+
+export const selectToken = (state:any) => {
+    console.log("TOKEN!", state.user.token)
+    return state.user.token;
+}
+export const selectUser = (state:any) => {
+   return state.user;
+}

@@ -19,13 +19,12 @@ const MyMapComponent = withScriptjs(
        {props.bikes.map((bike) => {
           const { latitude, longitude } = bike;
           const isSelected = props.selectedBike === bike;
-          const color = isSelected ? "grey" : "red"
+          // const color = isSelected ? {color:"grey"} : {color:"red"}
           return (
             <Marker
               key={bike.id}
               position={{ lat: latitude, lng: longitude }}
               title={bike.name}
-              icon={color}
               animation={google.maps.Animation.DROP}
               onClick={() => {
                 console.log("something")
