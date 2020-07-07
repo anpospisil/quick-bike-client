@@ -8,25 +8,29 @@ import {
 import { Bike } from "../types/Bike"
 
 export default function Map(props: any){
-const [selectedBike, setSelectedBike] = useState(null)
+
 
 const MyMapComponent = withScriptjs(
-  withGoogleMap((props: { bikes: Bike[]; }) => (
+  withGoogleMap((props: { bikes: Bike[], setSelectedBike: (bike:Bike) => void, selectedBike: Bike}) => (
     <GoogleMap
      defaultZoom={12} 
      defaultCenter={{ lat: 52.379922, lng: 4.899838 }}
     >
        {props.bikes.map((bike) => {
           const { latitude, longitude } = bike;
+          const isSelected = props.selectedBike === bike;
+          const color = isSelected ? "grey" : "red"
           return (
             <Marker
               key={bike.id}
               position={{ lat: latitude, lng: longitude }}
               title={bike.name}
+              icon={color}
               animation={google.maps.Animation.DROP}
-            //   onClick={() => {
-            //     setSelectedBike(bike);
-            //  }}
+              onClick={() => {
+                console.log("something")
+                props.setSelectedBike(bike);
+             }}
             />
           );
         })}
@@ -44,6 +48,8 @@ const MyMapComponent = withScriptjs(
     //@ts-ignore
     mapElement={<div style={{ height: `100%` }} />}
     bikes={props.bikes}
+    setSelectedBike = {props.setSelectedBike}
+    selectedBike = {props.selectedBike}
   />
   )
 };
