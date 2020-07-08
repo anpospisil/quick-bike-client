@@ -8,7 +8,3 @@ export interface Bike {
     updatedAt: Date;
     locked: boolean;
 }
-
-export interface bikeId {
-    id: number;
-}
