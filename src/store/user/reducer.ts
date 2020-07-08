@@ -9,14 +9,13 @@ import { UserActionTypes } from "../../types/actions";
     token: localStorage.getItem("token"),
     name: null,
     email: null,
-    homepage: null
   };
   
   export default (state = initialState, action: UserActionTypes) => {
     switch (action.type) {
       case LOGIN_SUCCESS:
         localStorage.setItem("token", action.token.jwt);
-        return { ...state, ...action };
+        return { ...state, ...action.token };
   
       case LOG_OUT:
         localStorage.removeItem("token");

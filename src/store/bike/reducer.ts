@@ -8,6 +8,12 @@ const initialState: Bike[] = [];
   
       case 'FETCH_BIKES':
         return [...action.bikes];
+
+      case 'BIKE_RESERVED':
+        return {...state, ...action.bike} 
+
+      case 'BIKE_FREE':
+        return {...state, ...action}   
   
       default:
         return state;

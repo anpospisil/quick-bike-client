@@ -21,9 +21,8 @@ export default function Navigation() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/user" linkText="My Profile" />
           <NavbarItem path="/" linkText="Reserve Bikes" />
-          {token ? <NavbarItem path="/myhomepage" linkText="My Page" /> : null}
+          {token ? <NavbarItem path="/user" linkText="My Profile" /> : null}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>
