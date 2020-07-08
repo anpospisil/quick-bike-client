@@ -55,25 +55,43 @@ export type UserActionTypes = DisplayUserAction | UserLogInAction | TokenValidAc
 
 //BIKE ACTION TYPES
 export const FETCH_BIKES = "FETCH_BIKES"
+export const BIKE_RESERVED = "BIKE_RESERVED"
+export const BIKE_FREE = "BIKE_FREE"
 
 export interface SetBikeAction {
     type: typeof FETCH_BIKES;
     bikes: Bike[];
 } 
 
-export type BikeActionTypes = SetBikeAction 
+export interface SetBikeReserved {
+    type: typeof BIKE_RESERVED;
+    bike: Bike;
+}
+
+export interface SetBikeFree {
+    type: typeof BIKE_FREE;
+    bike: Bike;
+}
+
+export type BikeActionTypes = SetBikeAction | SetBikeReserved | SetBikeFree
 
 
 //RESERVATION ACTION TYPES
 
 export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS"
+export const RESERVATION_ENDED = "RESERVATION_ENDED"
 
 export interface SetReservationAction {
     type: typeof RESERVATION_SUCCESS;
     reservation: Reservation;
 } 
 
-export type ReservationActionTypes = SetReservationAction
+export interface EndReservationAction {
+    type: typeof RESERVATION_ENDED;
+    reservation: Reservation;
+} 
+
+export type ReservationActionTypes = SetReservationAction | EndReservationAction
 
 
 // ALL TOGETHER

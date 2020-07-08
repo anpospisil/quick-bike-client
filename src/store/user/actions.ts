@@ -4,7 +4,7 @@ import { AppActions } from "../../types/actions";
 import { Token } from "../../types/User";
 import { Dispatch } from "redux";
 import { AppState } from "../index";
-import { selectToken, selectUser } from "./selectors";
+import { selectToken } from "./selectors";
 import {
   appLoading,
   appDoneLoading,
