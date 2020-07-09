@@ -55,9 +55,6 @@ export default function SignUp() {
             placeholder="Enter email"
             required
           />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
         </Form.Group>
 
         <Form.Group controlId="formBasicPassword">
@@ -71,7 +68,7 @@ export default function SignUp() {
           />
         </Form.Group>
         <Form.Group className="mt-5">
-          <Button variant="primary" type="submit" onClick={submitForm}>
+          <Button variant="warning" type="submit" onClick={submitForm}>
             Sign up
           </Button>
         </Form.Group>
