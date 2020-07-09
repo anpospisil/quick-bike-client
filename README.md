@@ -4,21 +4,21 @@ Click :point_right: [HERE]() :point_left: to check out the deployed version!
 
 ## Introduction
 
-Hello There! My name is Andrew. This is my portfolio project named 'Quick Bike'. Please keep in mind that this is a MVP, not a final version. You can check out my "To Do" list [here](https://github.com/users/anpospisil/projects/1) to see the progress I've made and features that will be added in future.
+Hello There! My name is Andrew. This is my portfolio project named 'Quick Bike'. Please, keep in mind that this is a MVP, not a final version. You can check out my "To Do" list [here](https://github.com/users/anpospisil/projects/1) to see the progress I've made and features that will be added in future.
 
 
 ## The Concept
 
-This main idea of this project is to create a web-based app for short-term bike rental. Users can create an accout, reserve a bike using a map interface and lock/unlock their bike in-app.
+This main idea of this project is to create a web-based app for short-term bike rental. Users can create an account, reserve a bike using a map interface and lock/unlock their bike in-app.
 
 ## Contents
 
-- [App Demo](https://github.com/nazneen1022/Pick-and-Pocket-Client#App-Demo)
-- [Technology Used](https://github.com/nazneen1022/Pick-and-Pocket-Client#technology-used)
-- [Goals of this project](https://github.com/nazneen1022/Pick-and-Pocket-Client#goals-of-this-project)
-- [User stories & Wireframe](https://github.com/nazneen1022/Pick-and-Pocket-Client#user-stories-and-wireframe)
-- [Git Workflow](https://github.com/nazneen1022/Pick-and-Pocket-Client#git-workflow)
-- [Server Repo](https://github.com/nazneen1022/Pick-and-Pocket-server)
+- [App Demo](https://github.com/anpospisil/quick-bike-client#App-Demo)
+- [Technology Used](https://github.com/anpospisil/quick-bike-client#technology-used)
+- [Goals of this project](https://github.com/anpospisil/quick-bike-client#goals-of-this-project)
+- [User stories & Wireframe](https://github.com/anpospisil/quick-bike-client#user-stories-and-wireframe)
+- [Git Workflow](https://github.com/anpospisil/quick-bike-client#git-workflow)
+- [Server Repo](https://github.com/anpospisil/quick-bike-server)
 
 ## App Demo
 
