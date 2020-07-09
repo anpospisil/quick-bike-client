@@ -78,7 +78,7 @@ In this project I try to:
 - Commit frequently
 - Push features to development rather than master
 
-👇 Click below links to view 👀 samples of pull requests
+👇 Click below links to view 👀 commit history for frontend & backend
 
 - [Frontend Features](https://github.com/anpospisil/quick-bike-client/branches/yours)
 - [Backend Features](https://github.com/anpospisil/quick-bike-server/branches)
