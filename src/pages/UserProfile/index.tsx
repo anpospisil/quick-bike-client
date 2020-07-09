@@ -21,7 +21,7 @@ const {imageURL, name, email} = user
         <Card.Text>
           {email}
         </Card.Text>
-        <Button variant="primary">Trip History</Button>
+        <Button variant="warning">Trip History</Button>
       </Card.Body>
     </Card>
   );

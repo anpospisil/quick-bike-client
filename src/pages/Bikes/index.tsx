@@ -14,6 +14,7 @@ export default function Bikes() {
   const bikes = useSelector(selectBikes);
 
   const [selectedBike, setSelectedBike] = useState<Bike | undefined>(undefined);
+  // const [reserved, setReserved] = useState(false)
   console.log("THIS is selectedBike", selectedBike);
   console.log("This is bikes", bikes);
   useEffect(() => {
@@ -47,10 +48,10 @@ export default function Bikes() {
           <h1 className="mt-5 mb-5">Reserve a Bike</h1>
           <Map bikes={fbikes} setSelectedBike={setSelectedBike} />
           <Form.Group className="mt-5">
-            <Button variant="primary" type="button" style={{marginRight:"5px"}} onClick={submitHandler}>
+            <Button variant="warning" type="button" style={{marginRight:"5px"}} onClick={submitHandler}>
               Reserve Bike
             </Button>
-            <Button variant="primary" type="button" onClick={endHandler}>
+            <Button variant="warning" type="button" onClick={endHandler}>
               End Reservation
             </Button>
           </Form.Group>
