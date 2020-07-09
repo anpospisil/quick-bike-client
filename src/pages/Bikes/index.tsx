@@ -36,9 +36,12 @@ export default function Bikes() {
   const fbikes = bikes.filter((bike:Bike): Bike | undefined => {
     if(bike.reserved !== true) {
       return bike
+    } else {
+      return undefined
     }
   }
   )
+  console.log("RESSS", fbikes)
 
   return (
     <div>
