@@ -53,7 +53,7 @@ The goal of this project is to build a full-stack app using knowledge gained dur
 - Showcase development process through wireframes, user stories and UML
 - Practice proper commits & branching on github
 
-## User stories and Wireframe
+## User Stories
 
 - User Stories
 
@@ -65,9 +65,10 @@ The goal of this project is to build a full-stack app using knowledge gained dur
 
   This mvp is still a work in progress. Some features still need to be implemented and revised.
 
-- Wireframe
+## Wireframes & UML
 
   - [Quick Bike Wireframes](https://balsamiq.cloud/sivxjco/p7hyx0j)
+  - [UML](https://app.lucidchart.com/invitations/accept/e3767556-4f7a-4c8d-a2e8-e3378228e2cc)
 
 ## Git Workflow
 

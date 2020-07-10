@@ -39,13 +39,13 @@ const MyMapComponent = withScriptjs(
 );
 
   return (<MyMapComponent
-    //@ts-ignore
+   
     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNlPylkcq2YP0tFJgpz-XgQF7RPkl8Cpw"
-    //@ts-ignore
+   
     loadingElement={<div style={{ height: `100%` }} />}
-    //@ts-ignore
+   
     containerElement={<div style={{ height: `400px` }} />}
-    //@ts-ignore
+   
     mapElement={<div style={{ height: `100%` }} />}
     bikes={props.bikes}
     setSelectedBike = {props.setSelectedBike}
