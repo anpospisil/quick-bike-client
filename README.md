@@ -16,7 +16,8 @@ This main idea of this project is to create a web-based app for short-term bike 
 - [App Demo](https://github.com/anpospisil/quick-bike-client#App-Demo)
 - [Technology Used](https://github.com/anpospisil/quick-bike-client#technology-used)
 - [Goals of this project](https://github.com/anpospisil/quick-bike-client#goals-of-this-project)
-- [User stories & Wireframe](https://github.com/anpospisil/quick-bike-client#user-stories-and-wireframe)
+- [User stories](https://github.com/anpospisil/quick-bike-client#user-stories)
+- [Wireframes & UML](https://github.com/anpospisil/quick-bike-client#wireframes-and-uml)
 - [Git Workflow](https://github.com/anpospisil/quick-bike-client#git-workflow)
 - [Server Repo](https://github.com/anpospisil/quick-bike-server)
 
@@ -65,10 +66,10 @@ The goal of this project is to build a full-stack app using knowledge gained dur
 
   This mvp is still a work in progress. Some features still need to be implemented and revised.
 
-## Wireframes & UML
+## Wireframes and UML
 
   - [Quick Bike Wireframes](https://balsamiq.cloud/sivxjco/p7hyx0j)
-  - [UML](https://app.lucidchart.com/invitations/accept/e3767556-4f7a-4c8d-a2e8-e3378228e2cc)
+  - [UML](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/qb-uml.png)
 
 ## Git Workflow
 
