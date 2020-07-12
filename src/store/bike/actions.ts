@@ -10,8 +10,6 @@ export const bikesFetched = (Bikes: Bike[]): AppActions =>  ({
     bikes: Bikes,
 })
 
-
-
 export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: () => AppState) {
     const response = await axios.get(`${apiUrl}/bike`);
   

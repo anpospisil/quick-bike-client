@@ -13,7 +13,7 @@ const initialState: Reservation = {
 
 }
   
-  export default function reservationReducer(state = initialState, action: ReservationActionTypes): Reservation {
+  export default function reservationReducer(state = initialState, action: ReservationActionTypes): Reservation | Reservation[] {
     switch (action.type) {
   
       case 'RESERVATION_SUCCESS':
@@ -21,6 +21,9 @@ const initialState: Reservation = {
 
       case 'RESERVATION_ENDED':
         return {...state, ...action.reservation}  
+
+      case 'FETCH_USER_RESERVATIONS':
+        return [ ...action.reservations ]
   
       default:
         return state;

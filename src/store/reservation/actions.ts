@@ -6,6 +6,7 @@ import { AppActions } from "../../types/actions";
 import { Dispatch } from "redux";
 import { AppState } from "../index";
 import { selectToken } from "../user/selectors";
+import { Reservation } from "../../types/Reservation";
 
 
 export const RESERVATION_SUCCESS = (Reservation:any): AppActions =>  ({
@@ -92,3 +93,21 @@ export const endReservation = () => {
       }
     }
 
+    export const userReservationsFetched = (Reservations: Reservation[]): AppActions =>  ({
+      type: "FETCH_USER_RESERVATIONS",
+      reservations: Reservations,
+  })
+  
+  
+  
+  export async function fetchUserReservations(dispatch: Dispatch<AppActions>, getState: () => AppState) {
+    const token = selectToken(getState())  
+    const response = await axios.get(`${apiUrl}/reservation`, {
+      headers: {Authorization: `Bearer ${token}` }
+    }
+  )
+      
+      const Reservations = response.data.reservations;
+      console.log("AXIOS CALL", response.data.reservations)
+      dispatch(userReservationsFetched(Reservations));
+    }
