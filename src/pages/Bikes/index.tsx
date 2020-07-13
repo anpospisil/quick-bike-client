@@ -14,6 +14,7 @@ export default function Bikes() {
   const bikes = useSelector(selectBikes);
 
   const [selectedBike, setSelectedBike] = useState<Bike | undefined>(undefined);
+  const [msg, setMsg] = useState<string |undefined>("")
   // const [reserved, setReserved] = useState(false)
   console.log("THIS is selectedBike", selectedBike);
   console.log("This is bikes", bikes);
@@ -26,11 +27,13 @@ export default function Bikes() {
     if (selectedBike) {
       dispatch(createReservation(selectedBike.id));
     }
+    setMsg("reserved")
   }
 
   function endHandler(e: any) {
     e.preventDefault();
       dispatch(endReservation())
+      setMsg("reservation ended!")
   }
 
   const fbikes = bikes.filter((bike:Bike): Bike | undefined => {
@@ -60,6 +63,7 @@ export default function Bikes() {
           </Form.Group>
         </Form>
       </Container>
+      <p>{msg}</p>
 
       
     </div>
