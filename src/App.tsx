@@ -1,16 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import Bikes from "./pages/Bikes"
-import Map from './components/Map';
+import Lock from './pages/Lock';
+import Navbar from "./components/Navbar"
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
+import userProfile from './pages/UserProfile';
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <Switch>
-        <Route path ="/bikes" component={Bikes} />
-        <Route path ="/map" component={Map} />
+        <Route exact path = "/" component={Bikes} />
+        <Route path = "/user" component={userProfile} />
+        <Route path = "/mybike" component={Lock} />
+        <Route path = "/login" component={Login} />
+        <Route path="/signup" component={SignUp} />
       </Switch>
     </div>
   );

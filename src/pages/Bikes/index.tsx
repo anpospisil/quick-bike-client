@@ -1,56 +1,67 @@
 import React, { useState, useEffect } from "react";
-import { fetchAllBikes} from "../../store/bike/actions"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllBikes } from "../../store/bike/actions";
+import { selectBikes } from "../../store/bike/selectors";
+import { createReservation } from "../../store/reservation/actions";
+import { endReservation } from "../../store/reservation/actions";
+import { Bike } from "../../types/Bike";
 
-import Map from "../../components/Map"
-import { selectBikes } from "../../store/bike/selectors"
+import Map from "../../components/Map";
 import { Container, Button, Form, Col } from "react-bootstrap";
-
-interface BikeProps {
-  id?: number;
-  name?: string;
-}
 
 export default function Bikes() {
   const dispatch = useDispatch();
-  const bikes  = useSelector(selectBikes)
-    const [bike, setBike] = useState()
+  const bikes = useSelector(selectBikes);
 
-  console.log("This is bikes", bikes)
-    useEffect(() => {
-        dispatch(fetchAllBikes);
-      }, [dispatch]);
+  const [selectedBike, setSelectedBike] = useState<Bike | undefined>(undefined);
+  // const [reserved, setReserved] = useState(false)
+  console.log("THIS is selectedBike", selectedBike);
+  console.log("This is bikes", bikes);
+  useEffect(() => {
+    dispatch(fetchAllBikes);
+  }, [dispatch]);
 
+  function submitHandler(e: any) {
+    e.preventDefault();
+    if (selectedBike) {
+      dispatch(createReservation(selectedBike.id));
+    }
+  }
+
+  function endHandler(e: any) {
+    e.preventDefault();
+      dispatch(endReservation())
+  }
+
+  const fbikes = bikes.filter((bike:Bike): Bike | undefined => {
+    if(bike.reserved !== true) {
+      return bike
+    } else {
+      return undefined
+    }
+  }
+  )
+  console.log("RESSS", fbikes)
+
+  return (
+    <div>
       
-      // const bikeHandler = (event) => {
-      //   event.preventDefault();  
-      //   console.log("RESERVATION!", bike);
-      //   dispatch(reserveBike(bike));
-      // };
-      
-
-    return (
-        <div>
-            <Container>
-      <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
-        <h1 className="mt-5 mb-5">Reserve a Bike</h1>
-        <Form.Group controlId="formBike">
-          <Form.Label>Bikes</Form.Label>
-          <Form.Control as="select">
-            {bikes.map((bike:any) => (
-              <option>{bike.name} - Lat {bike.latitude}, Long {bike.longitude} </option>
-            ))}
-          </Form.Control>
-        </Form.Group>
+      <Container>
+        <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
+          <h1 className="mt-5 mb-5">Reserve a Bike</h1>
+          <Map bikes={fbikes} setSelectedBike={setSelectedBike} />
+          <Form.Group className="mt-5">
+            <Button variant="warning" type="button" style={{marginRight:"5px"}} onClick={submitHandler}>
+              Reserve Bike
+            </Button>
+            <Button variant="warning" type="button" onClick={endHandler}>
+              End Reservation
+            </Button>
+          </Form.Group>
         </Form>
-        </Container>
-        <Form.Group className="mt-5">
-          <Button variant="primary" type="submit">
-          Bike Desu~
-          </Button>
-        </Form.Group>
+      </Container>
 
-        <Map bikes={bikes}/>
-        </div>
-    )
+      
+    </div>
+  );
 }

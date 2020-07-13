@@ -1,44 +1,97 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# QUICK BIKE :bike:
 
-## Available Scripts
+Click :point_right: [HERE](https://quick-bike.netlify.app/) :point_left: to check out the deployed version!
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+Hello There! My name is Andrew. This is my portfolio project named 'Quick Bike'. Please, keep in mind that this is a MVP, not a final version. You can check out my "To Do" list [here](https://github.com/users/anpospisil/projects/1) to see the progress I've made and features that will be added in future.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## The Concept
 
-### `npm test`
+This main idea of this project is to create a web-based app for short-term bike rental. Users can create an account, reserve a bike using a map interface and lock/unlock their bike in-app.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Contents
 
-### `npm run build`
+- [App Demo](https://github.com/anpospisil/quick-bike-client#App-Demo)
+- [Technology Used](https://github.com/anpospisil/quick-bike-client#technology-used)
+- [Goals of this project](https://github.com/anpospisil/quick-bike-client#goals-of-this-project)
+- [User stories](https://github.com/anpospisil/quick-bike-client#user-stories)
+- [Wireframes & UML](https://github.com/anpospisil/quick-bike-client#wireframes-and-uml)
+- [Git Workflow](https://github.com/anpospisil/quick-bike-client#git-workflow)
+- [Server Repo](https://github.com/anpospisil/quick-bike-server)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## App Demo
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/signUp.png)
+![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/login.png)
+![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/user.png)
+![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/selectbike.png)
+![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/bikeLocked.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Technology Used
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [React](https://github.com/anpospisil/quick-bike-client/blob/master/src/pages/Bikes/index.tsx)
+- [Redux](https://github.com/anpospisil/quick-bike-client/tree/master/src/store)
+- [TypeScript](https://github.com/anpospisil/quick-bike-client/tree/master/src/types) ⭐️
+- [React-Google-Maps](https://github.com/anpospisil/quick-bike-client/blob/master/src/components/Map.tsx) ⭐️
+- [React Bootstrap](https://github.com/anpospisil/quick-bike-client/blob/master/src/pages/UserProfile/index.tsx)
+- [Express](https://github.com/anpospisil/quick-bike-server/blob/development/index.js)
+- [Sequelize](https://github.com/anpospisil/quick-bike-server/tree/development/models)
+- [Balsamiq](https://balsamiq.cloud/sivxjco/p7hyx0j) ⭐️
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+⭐️ New technologies learned during this project.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Goals of this project
 
-## Learn More
+The goal of this project is to build a full-stack app using knowledge gained during the bootcamp and incorporating new technologies learned using official documentations and googling.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Practice full-stack development
+- Apply knowledge gained from the bootcamp
+- Learn and Apply new technology independently
+- Showcase development process through wireframes, user stories and UML
+- Practice proper commits & branching on github
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## User Stories
+
+- User Stories
+
+  - As a person taking a day trip to a large city, I want to reserve a bike for the day.
+  - As a person who doesn’t memorize addresses, I would like to view available bikes on a map depending on the postal code I input, so I don’t have to spend a lot of time searching for bikes.
+  - As someone who loses things easily, I want a simple way to unlock/lock my Quick Bike from the App so I don’t have to fiddle with keys or locking mechanisms.
+  - As a person who values their privacy and security, I want to have a dedicated profile that requires login info so that only I can see my trip and payment info.
+  - As a cost-conscious user of Quick Bike, I want to see my invoices organized by week, month and year so I can budget accordingly and have a record for tax purposes.
+
+  This mvp is still a work in progress. Some features still need to be implemented and revised.
+
+## Wireframes and UML
+
+  - [Quick Bike Wireframes](https://balsamiq.cloud/sivxjco/p7hyx0j)
+  - [UML](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/qb-uml.png)
+
+## Git Workflow
+
+In this project I try to:
+
+- Use descriptive commit messages
+- Name branches according to feature
+- Commit frequently
+- Push features to development rather than master
+
+👇 Click below links to view 👀 commit history for frontend & backend
+
+- [Frontend Features](https://github.com/anpospisil/quick-bike-client/branches/yours)
+- [Backend Features](https://github.com/anpospisil/quick-bike-server/branches)
+
+## How to Install this?
+
+- clone the app
+- cd into the project
+- Install dependencies using `npm install`
+- start development server using `npm run start`
+
+## Server Repo
+
+- The server side of this project is an Express server connected to a Sequelize database. [Click here for more details](https://github.com/anpospisil/quick-bike-server)
