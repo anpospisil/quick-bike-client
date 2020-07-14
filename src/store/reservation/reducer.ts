@@ -20,11 +20,11 @@ const initialState: Reservation = {
         return {...state, ...action.reservation}
 
       case 'RESERVATION_ENDED':
-        return {...state, ...action.reservation}  
+        return {...state, ...action.reservation}
 
         case 'RESERVATION_FETCHED':
-        return {...state, ...action.reservation} 
-  
+        return {...action.reservation} 
+      
       default:
         return state;
     }
