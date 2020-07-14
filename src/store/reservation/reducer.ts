@@ -21,6 +21,9 @@ const initialState: Reservation = {
 
       case 'RESERVATION_ENDED':
         return {...state, ...action.reservation}  
+
+        case 'RESERVATION_FETCHED':
+        return {...state, ...action.reservation} 
   
       default:
         return state;

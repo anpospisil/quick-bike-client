@@ -1,13 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { selectUser } from "../../store/user/selectors";
+import { selectReservation } from "../../store/reservation/selectors"
 
 
 
 export default function UserProfile() {
-const user = useSelector(selectUser);
+const user = useSelector(selectUser)
 const {imageURL, name, email} = user
+
+const reservation = useSelector(selectReservation)
+console.log("USER RES", reservation)
+
   return (
 
     <Card style={{ width: "100%" }}>
@@ -21,7 +26,10 @@ const {imageURL, name, email} = user
         <Card.Text>
           {email}
         </Card.Text>
-        <Button variant="warning">Trip History</Button>
+        <Card.Text>
+          Current Trip:
+            <ul><li>Started at: {reservation.startTime}</li></ul>
+        </Card.Text>
       </Card.Body>
     </Card>
   );

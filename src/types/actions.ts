@@ -80,6 +80,7 @@ export type BikeActionTypes = SetBikeAction | SetBikeReserved | SetBikeFree
 
 export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS"
 export const RESERVATION_ENDED = "RESERVATION_ENDED"
+export const RESERVATION_FETCHED = "RESERVATION_FETCHED"
 
 export interface SetReservationAction {
     type: typeof RESERVATION_SUCCESS;
@@ -91,7 +92,12 @@ export interface EndReservationAction {
     reservation: Reservation;
 } 
 
-export type ReservationActionTypes = SetReservationAction | EndReservationAction
+export interface FetchedReservationAction {
+    type: typeof RESERVATION_FETCHED;
+    reservation: Reservation;
+} 
+
+export type ReservationActionTypes = SetReservationAction | EndReservationAction | FetchedReservationAction
 
 
 // ALL TOGETHER

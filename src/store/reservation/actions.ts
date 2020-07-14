@@ -28,6 +28,19 @@ export const BIKE_FREE = (Bike: any): AppActions =>  ({
   bike: Bike,
 })
 
+export const RESERVATION_FETCHED = (Reservation: any): AppActions =>  ({
+  type: "RESERVATION_FETCHED",
+  reservation: Reservation,
+})
+
+export async function fetchCurrentReservation(dispatch: Dispatch<AppActions>, getState: () => AppState) {
+  const response = await axios.get(`${apiUrl}/reservation`);
+
+  const Reservation = response.data.reservation;
+  console.log("AXIOS CALL", response.data.reservation)
+  dispatch(RESERVATION_FETCHED(Reservation));
+}
+
 export const createReservation = (id: number) => {
 return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const token = selectToken(getState())
