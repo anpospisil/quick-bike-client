@@ -22,6 +22,7 @@ export default function Navigation() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav style={{ width: "100%" }} fill>
+          <NavbarItem className="nav-item" path="/about" linkText="What is QB?" />
           <NavbarItem className="nav-item" path="/" linkText="Reserve Bike" />
           <NavbarItem className="nav-item" path="/mybike" linkText="My Bike" />
           {token ? <NavbarItem className="nav-item" path="/user" linkText="My Profile" /> : null}

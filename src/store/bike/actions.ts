@@ -21,7 +21,7 @@ export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: ()
     const response = await axios.get(`${apiUrl}/bike`);
   
     const Bikes = response.data.bikes;
-    console.log("AXIOS CALL", response.data.bikes)
+    console.log("AXIOS BIKE CALL", response.data.bikes)
     dispatch(bikesFetched(Bikes));
   }
 
