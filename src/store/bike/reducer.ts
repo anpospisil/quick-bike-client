@@ -14,6 +14,18 @@ const initialState: Bike[] = [];
 
       case 'BIKE_FREE':
         return {...state, ...action}   
+
+      case 'TOGGLE_LOCK':
+        return state.map(bike => {
+          if (bike.id === action.bike.id) {
+            return {
+              ...bike, 
+              ...action.bike
+            }
+          } else {
+            return bike
+          }
+        })
   
       default:
         return state;

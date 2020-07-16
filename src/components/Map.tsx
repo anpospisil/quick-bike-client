@@ -9,7 +9,6 @@ import { Bike } from "../types/Bike"
 
 export default function Map(props: any){
 
-
 const MyMapComponent = withScriptjs(
   withGoogleMap((props: { bikes: Bike[], setSelectedBike: (bike:Bike) => void, selectedBike: Bike}) => (
     <GoogleMap
