@@ -1,6 +1,7 @@
 import { User, Payload } from "./User"
 import { Bike } from "./Bike"
 import { Reservation } from "./Reservation"
+import { Message } from "./Message";
 
 //APPSTATE ACTION TYPES
 export const APP_LOADING = "APP_LOADING";
@@ -16,11 +17,21 @@ export interface appDoneLoading{
      type: typeof APP_DONE_LOADING
 }
 
+export interface setMessage{
+    type: typeof SET_MESSAGE
+    payload: Message
+}
+
+export interface showMessageWithTimeout{
+    type: typeof SET_MESSAGE
+    payload: Message
+}
+
 export interface clearMessage{
      type: typeof CLEAR_MESSAGE
 }
 
-export type AppStateActionTypes = appLoading | appDoneLoading | clearMessage
+export type AppStateActionTypes = appLoading | appDoneLoading | clearMessage | setMessage | showMessageWithTimeout
 
 
 // USER ACTION TYPES

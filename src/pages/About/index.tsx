@@ -1,6 +1,9 @@
 import React from "react";
 import { Card, Row, Col, Container } from "react-bootstrap";
 import blob from "../../img/blob.svg";
+import blob2 from "../../img/blob2.svg";
+import blob3 from "../../img/blob3.svg";
+import blob4 from "../../img/blob4.svg";
 import register from "../../img/register.svg";
 import map from "../../img/map.svg";
 import lock from "../../img/lock.svg";
@@ -25,7 +28,7 @@ export default function About() {
           </Col>
           <Col className="col-lg-6 col-sm-12">
             <Card className="h-100">
-              <Card.Img className="bg-img" src={blob} alt="Card image" />
+              <Card.Img className="bg-img" src={blob2} alt="Card image" />
               <Card.ImgOverlay>
                 <Card.Img className="cardIcon" src={map} />
                 <Card.Title className="cardText">2. Select Bike</Card.Title>
@@ -35,7 +38,7 @@ export default function About() {
           </Col>
           <Col className="col-lg-6 col-sm-12">
             <Card className="h-100">
-              <Card.Img className="bg-img" src={blob} alt="Card image" />
+              <Card.Img className="bg-img" src={blob3} alt="Card image" />
               <Card.ImgOverlay>
                 <Card.Img className="cardIcon" src={lock} />
                 <Card.Title className="cardText">3. Unlock</Card.Title>
@@ -45,7 +48,7 @@ export default function About() {
           </Col>
           <Col className="col-lg-6 col-sm-12">
             <Card className="h-100">
-              <Card.Img className="bg-img" src={blob} alt="Card image" />
+              <Card.Img className="bg-img" src={blob4} alt="Card image" />
               <Card.ImgOverlay>
                 <Card.Img className="cardIcon" src={bike} />
                 <Card.Title className="cardText">4. Ride</Card.Title>

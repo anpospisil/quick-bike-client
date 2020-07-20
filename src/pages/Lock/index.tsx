@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 import Joyride, { STATUS } from "react-joyride";
-import "./Lock.css";
+import "./Lock.scss";
 import lock from "../../img/lock.svg";
 import bike from "../../img/bike.svg";
 import unlock from "../../img/unlock.svg";
@@ -30,13 +30,13 @@ export default function Lock() {
     },
     {
       target: ".step3",
-      title: "(◕ ワ ◕✿)",
+      title: "┗(◕ ワ ◕✿)",
       content: "Input this special code HERE.",
     },
     {
       target: ".step4",
       title: "(◠‿◠✿)",
-      content: "Tap unlock and voila! You are ready to go!",
+      content: "Tap to unlock and voila! You are ready to go!",
     },
     {
       target: ".step5",

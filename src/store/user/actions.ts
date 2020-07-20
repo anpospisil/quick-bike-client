@@ -9,7 +9,7 @@ import {
   appLoading,
   appDoneLoading,
   // showMessageWithTimeout,
-  // setMessage
+  setMessage
 } from "../appState/actions";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -41,15 +41,15 @@ export const signUp = (name: string, email: string, password: string) => {
       });
 
       dispatch(loginSuccess(response.data));
-      // dispatch(showMessageWithTimeout("success", true, "account created"));
+      dispatch(setMessage("success", true, "account created"));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        // console.log(error.response.data.message);
-        // dispatch(setMessage("danger", true, error.response.data.message));
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
       } else {
-        // console.log(error.message);
-        // dispatch(setMessage("danger", true, error.message));
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
       }
       dispatch(appDoneLoading());
     }
@@ -66,15 +66,15 @@ export const login = (email:string, password:string) => {
       });
 
       dispatch(loginSuccess(response.data));
-      // dispatch(showMessageWithTimeout("success", false, "welcome back!", 1500));
+      dispatch(setMessage("success", true, "welcome back!"));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
-        // console.log(error.response.data.message);
-        // dispatch(setMessage("danger", true, error.response.data.message));
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
       } else {
-        // console.log(error.message);
-        // dispatch(setMessage("danger", true, error.message));
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
       }
       dispatch(appDoneLoading());
     }
