@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 import Joyride, { STATUS } from "react-joyride";
@@ -7,13 +7,33 @@ import lock from "../../img/lock.svg";
 import bike from "../../img/bike.svg";
 import unlock from "../../img/unlock.svg";
 import { toggleBikeLock } from "../../store/bike/actions";
-import { selectReservation } from "../../store/reservation/selectors";
+import { selectUser } from "../../store/user/selectors";
+import { selectBikes } from "../../store/bike/selectors";
+// import { fetchCurrentReservation } from "../../store/user/actions"
 // import { Reservation } from "../../types/Reservation"
 
 export default function Lock() {
-  const reservation = useSelector(selectReservation);
+  const user = useSelector(selectUser);
+  console.log("User BIKE", user)
+  const bikes = useSelector(selectBikes);
   const dispatch = useDispatch();
-  const { locked } = reservation;
+  const { reservation } = user
+
+  // const userBike = bikes.find((bike:any) => bike.id === reservation.reservation.bikeId ? bike : null)
+  
+  
+  // useEffect(() => {
+  //   dispatch(fetchCurrentReservation);
+  // }, [dispatch]);
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(getPosition);
+  }
+  function getPosition(position:any) {
+    console.log("current location", position.coords.latitude, position.coords.longitude);
+  }
+
+  // const { locked } = reservation;
   const [ tutorial2Passed, setTutorial2Passed] = useState(false)
 
   const steps = [
@@ -47,7 +67,7 @@ export default function Lock() {
   ];
   function lockHandler(e: any) {
     e.preventDefault();
-    dispatch(toggleBikeLock(locked));
+    // dispatch(toggleBikeLock(locked));
   }
 
   return (
@@ -70,7 +90,7 @@ export default function Lock() {
           },
         }}
       />
-      {locked !== true ? (
+      {/* {locked !== true ? ( */}
         <Card style={{ width: "100%" }}>
           <Card.Text className="step1">
             You have reserved: CLAUDETTE @ CLAUDETTES LOCATION
@@ -96,7 +116,7 @@ export default function Lock() {
             </Button>
           </Card.Body>
         </Card>
-      ) : (
+      {/* ) : ( */}
         <Card style={{ width: "100%" }}>
           <Card.Img
             variant="top"
@@ -110,7 +130,7 @@ export default function Lock() {
             </Button>
           </Card.Body>
         </Card>
-      )}
+      {/* )} */}
     </div>
   );
 }

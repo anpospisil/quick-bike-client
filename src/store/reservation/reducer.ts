@@ -1,7 +1,7 @@
 import { Reservation } from "../../types/Reservation"
 import { ReservationActionTypes } from "../../types/actions";
 
-const initialState: Reservation[] = []
+const initialState: Reservation[] = [];
 // {
 //     id: 0,
 //     startTime: new Date(),
@@ -14,17 +14,18 @@ const initialState: Reservation[] = []
 
 // }
   
-  export default function reservationReducer(state = initialState, action: ReservationActionTypes): Reservation [] | Reservation{
+  export default function reservationReducer(state = initialState, action: ReservationActionTypes): Reservation[]{
     switch (action.type) {
   
       case 'RESERVATION_SUCCESS':
-        return {...state, ...action.reservation}
+        return [...state, action.reservation]
 
       case 'RESERVATION_ENDED':
-        return {...state, ...action.reservation}
+        const reservationUpdate = state.map(reservation => reservation.id === action.reservation.id ? action.reservation : reservation)
+        return [...reservationUpdate]
 
-        case 'RESERVATION_FETCHED':
-        return {...action.reservation} 
+        // case 'USER_RESERVATIONS_FETCHED':
+        //   return [...action.reservations] 
       
       default:
         return state;

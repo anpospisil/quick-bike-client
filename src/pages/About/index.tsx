@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Row, Col, Container } from "react-bootstrap";
+import { Link }  from "react-router-dom"
 import blob from "../../img/blob.svg";
 import blob2 from "../../img/blob2.svg";
 import blob3 from "../../img/blob3.svg";
@@ -21,7 +22,7 @@ export default function About() {
               <Card.Img className="bg-img" src={blob} alt="Card image" />
               <Card.ImgOverlay>
                 <Card.Img className="cardIcon" src={register} />
-                <Card.Title className="cardText">1. Register / Log In</Card.Title>
+                <Card.Title className="cardText">1. <Link to={"/signup"}>Register</Link> / <Link to={"/login"}>Log In</Link></Card.Title>
                 <Card.Text className="cardText">Register or Login!</Card.Text>
               </Card.ImgOverlay>
             </Card>
