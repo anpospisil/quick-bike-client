@@ -70,6 +70,10 @@ export const FETCH_BIKES = "FETCH_BIKES"
 export const BIKE_RESERVED = "BIKE_RESERVED"
 export const BIKE_FREE = "BIKE_FREE"
 export const TOGGLE_LOCK = "TOGGLE_LOCK"
+export const UNLOCK_BIKE = "UNLOCK_BIKE"
+export const LOCK_BIKE = "LOCK_BIKE"
+
+
 
 export interface SetBikeAction {
     type: typeof FETCH_BIKES;
@@ -86,12 +90,17 @@ export interface SetBikeFree {
     bike: Bike;
 }
 
-export interface SetBikeLock {
-    type: typeof TOGGLE_LOCK
-    bike: Bike
+export interface SetBikeUnlocked {
+    type: typeof UNLOCK_BIKE
+    bike: Bike;
 }
 
-export type BikeActionTypes = SetBikeAction | SetBikeReserved | SetBikeFree | SetBikeLock
+export interface SetBikeLocked {
+    type: typeof LOCK_BIKE
+    bike: Bike;
+}
+
+export type BikeActionTypes = SetBikeAction | SetBikeReserved | SetBikeFree | SetBikeLocked | SetBikeUnlocked
 
 
 //RESERVATION ACTION TYPES

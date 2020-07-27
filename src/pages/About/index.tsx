@@ -32,8 +32,8 @@ export default function About() {
               <Card.Img className="bg-img" src={blob2} alt="Card image" />
               <Card.ImgOverlay>
                 <Card.Img className="cardIcon" src={map} />
-                <Card.Title className="cardText">2. Select Bike</Card.Title>
-                <Card.Text className="cardText">Pick a bike from the map.</Card.Text>
+                <Card.Title className="cardText">2. Reserve Bike</Card.Title>
+                <Card.Text className="cardText">Pick a bike from the <Link to={"/"}>map</Link>.</Card.Text>
               </Card.ImgOverlay>
             </Card>
           </Col>
@@ -53,7 +53,7 @@ export default function About() {
               <Card.ImgOverlay>
                 <Card.Img className="cardIcon" src={bike} />
                 <Card.Title className="cardText">4. Ride</Card.Title>
-                <Card.Text className="cardText">You're all set! Don't forget to return the bike to the QB location you found it.</Card.Text>
+                <Card.Text className="cardText">You're all set! Please return the bike to the QB location you found it.</Card.Text>
               </Card.ImgOverlay>
             </Card>
           </Col>
