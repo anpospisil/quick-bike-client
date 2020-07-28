@@ -19,10 +19,10 @@ export default function Lock() {
   const bikes = useSelector(selectBikes);
   const dispatch = useDispatch();
 
-  const [ code, setCode] = useState<number>(0)
+  const [ code, setCode] = useState<number | undefined>(undefined);
 
   const userBike = bikes.find(
-    (bike: any) => bike.id === reservation.reservation.bikeId
+    (bike: any) => bike.id === reservation.bikeId
   );
 
   console.log("USER BIKE 11111", userBike);
@@ -72,7 +72,7 @@ export default function Lock() {
   function unlockHandler(e: any) {
     e.preventDefault();
     dispatch(unlockBike( code ));
-    setCode(0)
+    setCode(undefined)
   }
 
   function lockHandler(e: any) {

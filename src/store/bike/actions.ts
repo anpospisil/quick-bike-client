@@ -39,7 +39,7 @@ export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: ()
   }
 
   //unlock bike
-  export const unlockBike = (code:number) => {
+  export const unlockBike = (code:number | undefined) => {
     return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
         const token = selectToken(getState())
         try {
@@ -53,7 +53,8 @@ export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: ()
           }
         )
           
-        const Bike = response.data
+        const Bike = response.data.bike
+        console.log("unlock bike res", Bike)
         dispatch(UNLOCK_BIKE(Bike));
         
         }catch(error){
@@ -81,8 +82,7 @@ export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: ()
               headers: {Authorization: `Bearer ${token}` }
             }
           )
-            
-          const Bike = response.data
+          const Bike = response.data.bike
           dispatch(LOCK_BIKE(Bike));
           
           }catch(error){

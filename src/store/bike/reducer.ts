@@ -15,6 +15,7 @@ export default function bikeReducer(
       const reservedBikesArray = state.map((bike) =>
         bike.id === action.bike.id ? action.bike : bike
       );
+      console.log("This is reservedBikeArray", reservedBikesArray)
       return [...reservedBikesArray];
 
     case "BIKE_FREE":
@@ -24,10 +25,12 @@ export default function bikeReducer(
       return [...freeBikesArray];
 
     case "UNLOCK_BIKE":
+      
       const unlockBike = state.map((bike) => 
         bike.id === action.bike.id ? action.bike : bike
       )
-      return[...unlockBike]
+      console.log("BIKE REDUCER", unlockBike)
+      return [...unlockBike]
 
     case "LOCK_BIKE":
       const lockBike = state.map((bike) => 

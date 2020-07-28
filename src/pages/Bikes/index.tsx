@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllBikes } from "../../store/bike/actions";
 import { selectBikes } from "../../store/bike/selectors";
-import { selectReservations } from "../../store/reservation/selectors";
 import { selectUser } from "../../store/user/selectors";
 import { createReservation, setBikeToReserved, endReservation, setBikeFree } from "../../store/reservation/actions";
 import { Bike } from "../../types/Bike";
@@ -15,11 +14,9 @@ export default function Bikes() {
   const dispatch = useDispatch();
   const bikes = useSelector(selectBikes);
   const user = useSelector(selectUser);
-  const reservations = useSelector(selectReservations)
 
   const [selectedBike, setSelectedBike] = useState<Bike | undefined>(undefined);
   const [msg, setMsg] = useState<string |undefined>("")
-  const [reserved, setReserved] = useState(false)
   console.log("THIS is selectedBike", selectedBike);
   console.log("This is bikes", bikes);
 
@@ -37,7 +34,6 @@ export default function Bikes() {
       dispatch(createReservation(selectedBike.id));
       dispatch(setBikeToReserved(selectedBike.id))
     }
-    setReserved(true)
     setMsg("Reserved. Safe travels!")
     setSelectedBike(undefined)
   }
@@ -47,19 +43,13 @@ export default function Bikes() {
       dispatch(endReservation())
       dispatch(setBikeFree())
       setMsg("Reservation ended. Till next time!")
-      setReserved(false)
       
   }
 
-  const fbikes = bikes.filter((bike:Bike): Bike | undefined => {
-    if(bike.reserved !== true) {
-      return bike
-    } else {
-      return undefined
-    }
+  const fbikes = bikes.filter((bike:Bike) => {
+    return bike.reserved === false;
   }
   )
-  console.log("RESSS", fbikes)
 
   return (
     <div>

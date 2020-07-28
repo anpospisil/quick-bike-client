@@ -63,7 +63,7 @@ export const createReservation = (id: number) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    const newReservation = response.data;
+    const newReservation = response.data.reservation;
     console.log("NEW RESERVATION", newReservation);
     dispatch(RESERVATION_SUCCESS(newReservation));
     dispatch(RESERVATION_FETCHED(newReservation));
@@ -95,7 +95,7 @@ export const setBikeToReserved = (id: number) => {
       }
     );
 
-    const Bike = response.data;
+    const Bike = response.data.bike;
     console.log("THIS IS RESERVED", response.data);
     dispatch(BIKE_RESERVED(Bike));
     } catch(error){
@@ -155,8 +155,8 @@ export const setBikeFree = () => {
       }
     );
 
-    const Bike = response.data;
-    console.log("THIS IS FREE", response.data);
+    const Bike = response.data.bike;
+    console.log("THIS IS FREE", response.data.bike);
     dispatch(BIKE_FREE(Bike));
     // dispatch(LOCK_BIKE(Bike))
     } catch(error){
