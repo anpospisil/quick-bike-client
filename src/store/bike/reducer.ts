@@ -11,32 +11,19 @@ export default function bikeReducer(
     case "FETCH_BIKES":
       return [...action.bikes];
 
-    case "BIKE_RESERVED":
+    case "TOGGLE_RESERVED":
       const reservedBikesArray = state.map((bike) =>
         bike.id === action.bike.id ? action.bike : bike
       );
-      console.log("This is reservedBikeArray", reservedBikesArray)
+      console.log("This is reservedBikeArray", reservedBikesArray);
       return [...reservedBikesArray];
 
-    case "BIKE_FREE":
-      const freeBikesArray = state.map((bike) =>
+    case "TOGGLE_LOCK":
+      const toggleLock = state.map((bike) =>
         bike.id === action.bike.id ? action.bike : bike
       );
-      return [...freeBikesArray];
-
-    case "UNLOCK_BIKE":
-      
-      const unlockBike = state.map((bike) => 
-        bike.id === action.bike.id ? action.bike : bike
-      )
-      console.log("BIKE REDUCER", unlockBike)
-      return [...unlockBike]
-
-    case "LOCK_BIKE":
-      const lockBike = state.map((bike) => 
-        bike.id === action.bike.id ? action.bike : bike
-      )
-      return[...lockBike]
+      console.log("BIKE REDUCER", toggleLock);
+      return [...toggleLock];
 
     default:
       return state;

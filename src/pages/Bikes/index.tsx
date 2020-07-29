@@ -3,12 +3,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAllBikes } from "../../store/bike/actions";
 import { selectBikes } from "../../store/bike/selectors";
 import { selectUser } from "../../store/user/selectors";
-import { createReservation, setBikeToReserved, endReservation, setBikeFree } from "../../store/reservation/actions";
+import {
+  createReservation,
+  setBikeToReserved,
+  endReservation,
+  setBikeFree,
+  sendEmail,
+} from "../../store/reservation/actions";
 import { Bike } from "../../types/Bike";
 
 import Map from "../../components/Map";
 import { Container, Button, Form, Col } from "react-bootstrap";
-
 
 export default function Bikes() {
   const dispatch = useDispatch();
@@ -16,7 +21,7 @@ export default function Bikes() {
   const user = useSelector(selectUser);
 
   const [selectedBike, setSelectedBike] = useState<Bike | undefined>(undefined);
-  const [msg, setMsg] = useState<string |undefined>("")
+  const [msg, setMsg] = useState<string | undefined>("");
   console.log("THIS is selectedBike", selectedBike);
   console.log("This is bikes", bikes);
 
@@ -24,56 +29,55 @@ export default function Bikes() {
     dispatch(fetchAllBikes);
   }, [dispatch]);
 
-  const userReservation = user.reservation
+  const userReservation = user.reservation;
 
-  console.log("USER RESERVATIONS", userReservation)
+  console.log("USER RESERVATIONS", userReservation);
 
   function submitHandler(e: any) {
     e.preventDefault();
     if (selectedBike) {
       dispatch(createReservation(selectedBike.id));
-      dispatch(setBikeToReserved(selectedBike.id))
+      dispatch(setBikeToReserved(selectedBike.id));
+      dispatch(sendEmail(selectedBike.name))
     }
-    setMsg("Reserved. Safe travels!")
-    setSelectedBike(undefined)
+    setMsg("Reserved. Safe travels!");
+    setSelectedBike(undefined);
   }
 
   function endHandler(e: any) {
     e.preventDefault();
-      dispatch(endReservation())
-      dispatch(setBikeFree())
-      setMsg("Reservation ended. Till next time!")
-      
+    dispatch(endReservation());
+    dispatch(setBikeFree());
+    setMsg("Reservation ended. Till next time!");
   }
 
-  const fbikes = bikes.filter((bike:Bike) => {
+  const fbikes = bikes.filter((bike: Bike) => {
     return bike.reserved === false;
-  }
-  )
+  });
 
   return (
     <div>
-      
       <Container>
         <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
           <h1 className="mt-5 mb-5">Reserve a Bike</h1>
           <Map bikes={fbikes} setSelectedBike={setSelectedBike} />
-         {userReservation === null ? <p>Selected bike: {selectedBike?.name}</p> : null }
+          {userReservation === null ? (
+            <p>Selected bike: {selectedBike?.name}</p>
+          ) : null}
           <Form.Group className="mt-5">
-          {userReservation === null ? <Button variant="warning" type="button" onClick={submitHandler}>
-              Reserve Bike
-            </Button> : 
-            <Button variant="warning" type="button" onClick={endHandler}>
-              End Reservation
-            </Button>
-}
+            {userReservation === null ? (
+              <Button variant="warning" type="button" onClick={submitHandler}>
+                Reserve Bike
+              </Button>
+            ) : (
+              <Button variant="warning" type="button" onClick={endHandler}>
+                End Reservation
+              </Button>
+            )}
           </Form.Group>
         </Form>
       </Container>
       {userReservation !== null ? <p>{msg}</p> : null}
-
-
-      
     </div>
   );
 }

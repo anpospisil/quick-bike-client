@@ -12,14 +12,9 @@ export const bikesFetched = (Bikes: Bike[]): AppActions =>  ({
     bikes: Bikes,
 })
 
-export const UNLOCK_BIKE = (Bike: Bike): AppActions =>  ({
-    type: "UNLOCK_BIKE",
+export const TOGGLE_LOCK = (Bike: Bike): AppActions =>  ({
+    type: "TOGGLE_LOCK",
     bike: Bike
-})
-
-export const LOCK_BIKE = (Bike: Bike): AppActions =>  ({
-  type: "LOCK_BIKE",
-  bike: Bike
 })
 
 export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: () => AppState) {
@@ -55,7 +50,7 @@ export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: ()
           
         const Bike = response.data.bike
         console.log("unlock bike res", Bike)
-        dispatch(UNLOCK_BIKE(Bike));
+        dispatch(TOGGLE_LOCK(Bike));
         
         }catch(error){
           if (error.response) {
@@ -83,7 +78,7 @@ export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: ()
             }
           )
           const Bike = response.data.bike
-          dispatch(LOCK_BIKE(Bike));
+          dispatch(TOGGLE_LOCK(Bike));
           
           }catch(error){
             if (error.response) {

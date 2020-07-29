@@ -67,11 +67,9 @@ export type UserActionTypes = DisplayUserAction | UserLogInAction | TokenValidAc
 
 //BIKE ACTION TYPES
 export const FETCH_BIKES = "FETCH_BIKES"
-export const BIKE_RESERVED = "BIKE_RESERVED"
+export const TOGGLE_RESERVED = "TOGGLE_RESERVED"
 export const BIKE_FREE = "BIKE_FREE"
 export const TOGGLE_LOCK = "TOGGLE_LOCK"
-export const UNLOCK_BIKE = "UNLOCK_BIKE"
-export const LOCK_BIKE = "LOCK_BIKE"
 
 
 
@@ -81,34 +79,25 @@ export interface SetBikeAction {
 } 
 
 export interface SetBikeReserved {
-    type: typeof BIKE_RESERVED;
+    type: typeof TOGGLE_RESERVED;
     bike: Bike;
 }
 
-export interface SetBikeFree {
-    type: typeof BIKE_FREE;
+export interface SetBikeLock {
+    type: typeof TOGGLE_LOCK
     bike: Bike;
 }
 
-export interface SetBikeUnlocked {
-    type: typeof UNLOCK_BIKE
-    bike: Bike;
-}
 
-export interface SetBikeLocked {
-    type: typeof LOCK_BIKE
-    bike: Bike;
-}
-
-export type BikeActionTypes = SetBikeAction | SetBikeReserved | SetBikeFree | SetBikeLocked | SetBikeUnlocked
+export type BikeActionTypes = SetBikeAction | SetBikeReserved | SetBikeLock
 
 
 //RESERVATION ACTION TYPES
 
 export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS"
 export const RESERVATION_ENDED = "RESERVATION_ENDED"
-export const USER_RESERVATIONS_FETCHED = "USER_RESERVATIONS_FETCHED"
-export const RESERVATION_RELEASED = "RESERVATION_RELEASED"
+export const USER_RESERVATION_FETCHED = "USER_RESERVATION_FETCHED"
+export const USER_RESERVATION_RELEASED = "USER_RESERVATION_RELEASED"
 
 export interface SetReservationAction {
     type: typeof RESERVATION_SUCCESS;
@@ -121,12 +110,12 @@ export interface EndReservationAction {
 } 
 
 export interface FetchedReservationAction {
-    type: typeof RESERVATION_FETCHED;
+    type: typeof USER_RESERVATION_FETCHED;
     reservation: Reservation;
 } 
 
 export interface ReleaseReservationAction {
-    type: typeof RESERVATION_RELEASED;
+    type: typeof USER_RESERVATION_RELEASED;
 } 
 
 // export interface FetchedUserReservationsAction {

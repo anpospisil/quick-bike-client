@@ -1,7 +1,7 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
 import { AppActions } from "../../types/actions";
-import { Payload } from "../../types/User"
+import { Payload } from "../../types/User";
 import { Dispatch } from "redux";
 import { AppState } from "../index";
 import { selectToken } from "./selectors";
@@ -9,13 +9,12 @@ import {
   appLoading,
   appDoneLoading,
   // showMessageWithTimeout,
-  setMessage
+  setMessage,
 } from "../appState/actions";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
-
 
 const loginSuccess = (userWithToken: Payload): AppActions => {
   return {
@@ -57,7 +56,7 @@ export const signUp = (name: string, email: string, password: string) => {
   };
 };
 
-export const login = (email:string, password:string) => {
+export const login = (email: string, password: string) => {
   return async (dispatch: Dispatch, getState: () => AppState) => {
     dispatch(appLoading());
     try {
@@ -121,5 +120,5 @@ export const getUserWithStoredToken = () => {
 
 //   const Reservation = response.data.reservation;
 //   console.log("AXIOS RESERVE CALL", response.data.reservation);
-  
+
 // }
