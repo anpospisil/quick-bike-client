@@ -110,15 +110,3 @@ export const getUserWithStoredToken = () => {
     }
   };
 };
-
-//Gets current user reservation
-// export async function fetchCurrentReservation(
-//   dispatch: Dispatch<AppActions>,
-//   getState: () => AppState
-// ) {
-//   const response = await axios.get(`${apiUrl}/reservation`);
-
-//   const Reservation = response.data.reservation;
-//   console.log("AXIOS RESERVE CALL", response.data.reservation);
-
-// }

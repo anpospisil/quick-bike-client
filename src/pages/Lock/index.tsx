@@ -104,14 +104,15 @@ export default function Lock() {
       />
       {userBike.locked === true ? (
         <Card style={{ width: "100%" }}>
-          <Card.Text className="step1">
-            You have reserved: CLAUDETTE @ CLAUDETTES LOCATION
-          </Card.Text>
           <Card.Img
             className="step2 step5"
             src={bike}
             style={{ width: "100px", margin: "0 auto" }}
           />
+          <Card.Text className="step1">
+            You have reserved: {userBike.name}.
+          </Card.Text>
+          
           <Card.Img
             variant="top"
             style={{ width: "100px", margin: "0 auto" }}
