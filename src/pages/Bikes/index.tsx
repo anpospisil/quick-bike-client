@@ -46,7 +46,6 @@ export default function Bikes() {
     }
   }
   )
-  console.log("RESSS", fbikes)
 
   return (
     <div>

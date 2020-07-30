@@ -83,7 +83,6 @@ export type BikeActionTypes = SetBikeAction | SetBikeReserved | SetBikeFree | Se
 
 
 //RESERVATION ACTION TYPES
-
 export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS"
 export const RESERVATION_ENDED = "RESERVATION_ENDED"
 export const RESERVATION_FETCHED = "RESERVATION_FETCHED"
