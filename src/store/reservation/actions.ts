@@ -83,7 +83,7 @@ export const createReservation = (id: number) => {
 };
 
 //Sends reservation confirmation email
-export const sendEmail = (name: string | undefined) => {
+export const sendReservationEmail = (name: string | undefined) => {
   return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const token = selectToken(getState());
     try {
@@ -132,6 +132,30 @@ export const endReservation = () => {
       dispatch(RESERVATION_ENDED(Reservation));
       dispatch(USER_RESERVATION_RELEASED());
       dispatch(TOGGLE_RESERVED(Bike));
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
+    }
+  };
+};
+
+//Sends reservation ended confirmation email
+export const sendReservationEndEmail = () => {
+  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+    const token = selectToken(getState());
+    try {
+      const response = await axios.post(
+        `${apiUrl}/send/end`,{},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      console.log(response.data.message);
     } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);

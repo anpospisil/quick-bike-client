@@ -6,7 +6,8 @@ import { selectUser } from "../../store/user/selectors";
 import {
   createReservation,
   endReservation,
-  sendEmail,
+  sendReservationEmail,
+  sendReservationEndEmail,
 } from "../../store/reservation/actions";
 import { Bike } from "../../types/Bike";
 
@@ -35,7 +36,7 @@ export default function Bikes() {
     e.preventDefault();
     if (selectedBike) {
       dispatch(createReservation(selectedBike.id));
-      dispatch(sendEmail(selectedBike.name))
+      dispatch(sendReservationEmail(selectedBike.name))
     }
     setMsg("Reserved. Safe travels!");
     setSelectedBike(undefined);
@@ -44,6 +45,7 @@ export default function Bikes() {
   function endHandler(e: any) {
     e.preventDefault();
     dispatch(endReservation());
+    dispatch(sendReservationEndEmail())
     setMsg("Reservation ended. Till next time!");
   }
 
@@ -57,11 +59,11 @@ export default function Bikes() {
         <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
           <h1 className="mt-5 mb-5">Reserve a Bike</h1>
           <Map bikes={fbikes} setSelectedBike={setSelectedBike} />
-          {userReservation === null ? (
+          {!userReservation ? (
             <p>Selected bike: <span className="selectedBike">{selectedBike?.name}</span></p>
           ) : null}
           <Form.Group className="mt-5">
-            {userReservation === null ? (
+            {!userReservation ? (
               <Button variant="warning" type="button" onClick={submitHandler}>
                 Reserve Bike
               </Button>
@@ -73,7 +75,7 @@ export default function Bikes() {
           </Form.Group>
         </Form>
       </Container>
-      {userReservation !== null ? <p>{msg}</p> : null}
+      {userReservation ? <p>{msg}</p> : null}
     </div>
   );
 }
