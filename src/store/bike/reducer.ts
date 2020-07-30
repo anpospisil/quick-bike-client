@@ -10,11 +10,13 @@ const initialState: Bike[] = [];
         return [...action.bikes];
 
       case 'BIKE_RESERVED':
-        return {...state, ...action.bike} 
+        const reservedBikesArray = state.map(bike => bike.id === action.bike.id ? action.bike : bike)
+        return [...reservedBikesArray]
 
       case 'BIKE_FREE':
-        return {...state, ...action}   
-
+        const freeBikesArray = state.map(bike => bike.id === action.bike.id ? action.bike : bike)
+        return [...freeBikesArray]
+        
       case 'TOGGLE_LOCK':
         return state.map(bike => {
           if (bike.id === action.bike.id) {

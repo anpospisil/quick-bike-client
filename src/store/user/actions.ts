@@ -16,6 +16,7 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
 
+
 const loginSuccess = (userWithToken: Payload): AppActions => {
   return {
     type: LOGIN_SUCCESS,
@@ -41,7 +42,7 @@ export const signUp = (name: string, email: string, password: string) => {
       });
 
       dispatch(loginSuccess(response.data));
-      dispatch(setMessage("success", true, "account created"));
+      dispatch(setMessage("success", true, "(◠‿◠✿) account created"));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -66,7 +67,7 @@ export const login = (email:string, password:string) => {
       });
 
       dispatch(loginSuccess(response.data));
-      dispatch(setMessage("success", true, "welcome back!"));
+      dispatch(setMessage("success", true, "(◠‿◠✿) welcome back!"));
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -110,3 +111,15 @@ export const getUserWithStoredToken = () => {
     }
   };
 };
+
+//Gets current user reservation
+// export async function fetchCurrentReservation(
+//   dispatch: Dispatch<AppActions>,
+//   getState: () => AppState
+// ) {
+//   const response = await axios.get(`${apiUrl}/reservation`);
+
+//   const Reservation = response.data.reservation;
+//   console.log("AXIOS RESERVE CALL", response.data.reservation);
+  
+// }

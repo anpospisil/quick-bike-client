@@ -39,6 +39,7 @@ export const DISPLAY_USER_INFO = "DISPLAY_USER_INFO"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
+export const RESERVATION_FETCHED = "RESERVATION_FETCHED"
 
 export interface DisplayUserAction {
     type: typeof DISPLAY_USER_INFO;
@@ -58,7 +59,7 @@ export interface TokenValidAction {
 
 export interface UserLogOutAction {
     type: typeof LOG_OUT;
-    payload: Payload;
+    payload: Payload;    
 }
 
 export type UserActionTypes = DisplayUserAction | UserLogInAction | TokenValidAction | UserLogOutAction;
@@ -96,7 +97,8 @@ export type BikeActionTypes = SetBikeAction | SetBikeReserved | SetBikeFree | Se
 //RESERVATION ACTION TYPES
 export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS"
 export const RESERVATION_ENDED = "RESERVATION_ENDED"
-export const RESERVATION_FETCHED = "RESERVATION_FETCHED"
+export const USER_RESERVATIONS_FETCHED = "USER_RESERVATIONS_FETCHED"
+export const RESERVATION_RELEASED = "RESERVATION_RELEASED"
 
 export interface SetReservationAction {
     type: typeof RESERVATION_SUCCESS;
@@ -113,7 +115,19 @@ export interface FetchedReservationAction {
     reservation: Reservation;
 } 
 
-export type ReservationActionTypes = SetReservationAction | EndReservationAction | FetchedReservationAction
+export interface ReleaseReservationAction {
+    type: typeof RESERVATION_RELEASED;
+} 
+
+// export interface FetchedUserReservationsAction {
+//     type: typeof USER_RESERVATIONS_FETCHED;
+//     reservations: Reservation[];
+// } 
+
+
+
+export type ReservationActionTypes = SetReservationAction | EndReservationAction | FetchedReservationAction | ReleaseReservationAction;
+// FetchedUserReservationsAction ^^
 
 
 // ALL TOGETHER
