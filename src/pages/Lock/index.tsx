@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Form } from "react-bootstrap";
 import Joyride, { STATUS } from "react-joyride";
 import "./Lock.scss";
 import lock from "../../img/lock.svg";
 import bike from "../../img/bike.svg";
 import unlock from "../../img/unlock.svg";
-import { toggleBikeLock } from "../../store/bike/actions";
+import { unlockBike, lockBike } from "../../store/bike/actions";
 import { selectUser } from "../../store/user/selectors";
 import { selectBikes } from "../../store/bike/selectors";
 // import { fetchCurrentReservation } from "../../store/user/actions"
@@ -14,27 +14,31 @@ import { selectBikes } from "../../store/bike/selectors";
 
 export default function Lock() {
   const user = useSelector(selectUser);
-  console.log("User BIKE", user)
+  console.log("User BIKE", user);
+  const { reservation } = user;
   const bikes = useSelector(selectBikes);
   const dispatch = useDispatch();
-  const { reservation } = user
 
-  // const userBike = bikes.find((bike:any) => bike.id === reservation.reservation.bikeId ? bike : null)
-  
-  
-  // useEffect(() => {
-  //   dispatch(fetchCurrentReservation);
-  // }, [dispatch]);
+  const [ code, setCode] = useState<number | undefined>(undefined);
+
+  const userBike = bikes.find(
+    (bike: any) => bike.id === reservation.bikeId
+  );
+
+  console.log("USER BIKE 11111", userBike);
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(getPosition);
   }
-  function getPosition(position:any) {
-    console.log("current location", position.coords.latitude, position.coords.longitude);
+  function getPosition(position: any) {
+    console.log(
+      "current location",
+      position.coords.latitude,
+      position.coords.longitude
+    );
   }
 
-  // const { locked } = reservation;
-  const [ tutorial2Passed, setTutorial2Passed] = useState(false)
+  const [tutorial2Passed, setTutorial2Passed] = useState(false);
 
   const steps = [
     {
@@ -65,9 +69,15 @@ export default function Lock() {
         "Your code will remain the same for the duration of your trip. Safe travels!",
     },
   ];
+  function unlockHandler(e: any) {
+    e.preventDefault();
+    dispatch(unlockBike( code ));
+    setCode(undefined)
+  }
+
   function lockHandler(e: any) {
     e.preventDefault();
-    // dispatch(toggleBikeLock(locked));
+    dispatch(lockBike());
   }
 
   return (
@@ -75,8 +85,10 @@ export default function Lock() {
       <Joyride
         steps={steps}
         callback={({ status }) => {
-          if (([STATUS.FINISHED, STATUS.SKIPPED] as string[]).includes(status)) {
-            window.localStorage.setItem('tutorial2Passed', 'true');
+          if (
+            ([STATUS.FINISHED, STATUS.SKIPPED] as string[]).includes(status)
+          ) {
+            window.localStorage.setItem("tutorial2Passed", "true");
             setTutorial2Passed(true);
           }
         }}
@@ -90,7 +102,7 @@ export default function Lock() {
           },
         }}
       />
-      {/* {locked !== true ? ( */}
+      {userBike.locked === true ? (
         <Card style={{ width: "100%" }}>
           <Card.Text className="step1">
             You have reserved: CLAUDETTE @ CLAUDETTES LOCATION
@@ -107,16 +119,27 @@ export default function Lock() {
           />
           <Card.Body>
             <Card.Text>Bike Locked!</Card.Text>
-            <Card.Text className="step3">
-              <input id="partitioned" type="number" maxLength={6}></input>
-            </Card.Text>
+            <Form className="text-center">
+              <Form.Control
+                className="step3"
+                id="partitioned"
+                type="number"
+                maxLength={6}
+                onChange={e => setCode(parseInt(e.target.value))}
+              />
 
-            <Button className="step4" variant="warning" onClick={lockHandler}>
-              Unlock Bike
-            </Button>
+              <Button
+                className="step4"
+                variant="warning"
+                type="submit"
+                onClick={unlockHandler}
+              >
+                Unlock Bike
+              </Button>
+            </Form>
           </Card.Body>
         </Card>
-      {/* ) : ( */}
+      ) : (
         <Card style={{ width: "100%" }}>
           <Card.Img
             variant="top"
@@ -130,7 +153,7 @@ export default function Lock() {
             </Button>
           </Card.Body>
         </Card>
-      {/* )} */}
+      )}
     </div>
   );
 }

@@ -19,7 +19,6 @@ const MyMapComponent = withScriptjs(
           const { latitude, longitude } = bike;
           const isSelected = props.selectedBike === bike;
           console.log(isSelected)
-          // const color = isSelected ? {color:"grey"} : {color:"red"}
           return (
             <Marker
               key={bike.id}

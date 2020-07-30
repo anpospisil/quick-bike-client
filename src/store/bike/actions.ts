@@ -12,11 +12,15 @@ export const bikesFetched = (Bikes: Bike[]): AppActions =>  ({
     bikes: Bikes,
 })
 
-export const TOGGLE_LOCK = (Bike: Bike): AppActions =>  ({
-    type: "TOGGLE_LOCK",
+export const UNLOCK_BIKE = (Bike: Bike): AppActions =>  ({
+    type: "UNLOCK_BIKE",
     bike: Bike
 })
 
+export const LOCK_BIKE = (Bike: Bike): AppActions =>  ({
+  type: "LOCK_BIKE",
+  bike: Bike
+})
 
 export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: () => AppState) {
   try{
@@ -34,21 +38,24 @@ export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: ()
     }
   }
 
-  export const toggleBikeLock = (locked:boolean) => {
+  //unlock bike
+  export const unlockBike = (code:number | undefined) => {
     return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
         const token = selectToken(getState())
         try {
-        const response = await axios.patch(`${apiUrl}/bike/lock`,
+        const response = await axios.patch(`${apiUrl}/bike/unlock`,
         {
-            locked: locked
+          locked: false,
+          lockCode: code,        
         },
         {
             headers: {Authorization: `Bearer ${token}` }
           }
         )
           
-        const Bike = response.data
-        dispatch(TOGGLE_LOCK(Bike));
+        const Bike = response.data.bike
+        console.log("unlock bike res", Bike)
+        dispatch(UNLOCK_BIKE(Bike));
         
         }catch(error){
           if (error.response) {
@@ -61,3 +68,31 @@ export async function fetchAllBikes(dispatch: Dispatch<AppActions>, getState: ()
         }  
       }
     }
+
+    //lock bike
+    export const lockBike = () => {
+      return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
+          const token = selectToken(getState())
+          try {
+          const response = await axios.patch(`${apiUrl}/bike/lock`,
+          {
+              locked: true,
+          },
+          {
+              headers: {Authorization: `Bearer ${token}` }
+            }
+          )
+          const Bike = response.data.bike
+          dispatch(LOCK_BIKE(Bike));
+          
+          }catch(error){
+            if (error.response) {
+              console.log(error.response.data.message);
+              dispatch(setMessage("danger", true, error.response.data.message));
+            } else {
+              console.log(error.message);
+              dispatch(setMessage("danger", true, error.message));
+            }
+          }  
+        }
+      }

@@ -7,6 +7,7 @@ import { Dispatch } from "redux";
 import { AppState } from "../index";
 import { selectToken } from "../user/selectors";
 import { setMessage } from "../appState/actions";
+// import { LOCK_BIKE } from "../bike/actions"
 
 export const RESERVATION_SUCCESS = (Reservation: any): AppActions => ({
   type: "RESERVATION_SUCCESS",
@@ -62,7 +63,7 @@ export const createReservation = (id: number) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    const newReservation = response.data;
+    const newReservation = response.data.reservation;
     console.log("NEW RESERVATION", newReservation);
     dispatch(RESERVATION_SUCCESS(newReservation));
     dispatch(RESERVATION_FETCHED(newReservation));
@@ -94,7 +95,7 @@ export const setBikeToReserved = (id: number) => {
       }
     );
 
-    const Bike = response.data;
+    const Bike = response.data.bike;
     console.log("THIS IS RESERVED", response.data);
     dispatch(BIKE_RESERVED(Bike));
     } catch(error){
@@ -140,7 +141,7 @@ export const endReservation = () => {
 };
 
 //Updates a reserved Bike to not reserved
-export const setBikeFree = (id: number) => {
+export const setBikeFree = () => {
   return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const token = selectToken(getState());
     try{
@@ -154,9 +155,10 @@ export const setBikeFree = (id: number) => {
       }
     );
 
-    const Bike = response.data;
-    console.log("THIS IS FREE", response.data);
+    const Bike = response.data.bike;
+    console.log("THIS IS FREE", response.data.bike);
     dispatch(BIKE_FREE(Bike));
+    // dispatch(LOCK_BIKE(Bike))
     } catch(error){
       if (error.response) {
         console.log(error.response.data.message);
