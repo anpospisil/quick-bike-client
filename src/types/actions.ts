@@ -98,6 +98,7 @@ export const RESERVATION_ENDED = "RESERVATION_ENDED"
 export const USER_RESERVATION_FETCHED = "USER_RESERVATION_FETCHED"
 export const USER_RESERVATION_RELEASED = "USER_RESERVATION_RELEASED"
 
+
 export interface SetReservationAction {
     type: typeof RESERVATION_SUCCESS;
     reservation: Reservation;
@@ -107,6 +108,7 @@ export interface EndReservationAction {
     type: typeof RESERVATION_ENDED;
     reservation: Reservation;
 } 
+
 
 export interface FetchedReservationAction {
     type: typeof USER_RESERVATION_FETCHED;
@@ -121,8 +123,6 @@ export interface ReleaseReservationAction {
 //     type: typeof USER_RESERVATIONS_FETCHED;
 //     reservations: Reservation[];
 // } 
-
-
 
 export type ReservationActionTypes = SetReservationAction | EndReservationAction | FetchedReservationAction | ReleaseReservationAction;
 // FetchedUserReservationsAction ^^

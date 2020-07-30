@@ -8,6 +8,7 @@ export default function UserProfile() {
   const user = useSelector(selectUser);
   const { imageURL, name, email } = user;
 
+
   const reservations = useSelector(selectReservations);
   console.log("USER RES", reservations);
 
