@@ -9,6 +9,7 @@ const initialState = {
   name: null,
   email: null,
   reservation: null,
+  imageURL: null,
 };
 
 export default (
@@ -32,6 +33,9 @@ export default (
 
     case "USER_RESERVATION_RELEASED":
       return { ...state, reservation: null };
+
+      case "IMAGE_UPDATED":
+        return { ...state, imageURL: action.imageURL };
     default:
       return state;
   }

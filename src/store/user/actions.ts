@@ -15,6 +15,12 @@ import {
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
+export const IMAGE_UPDATED = "IMAGE_UPDATED"
+
+export const imageUpdated = (newImage: string): AppActions => ({
+  type: IMAGE_UPDATED,
+  imageURL: newImage,
+});
 
 const loginSuccess = (userWithToken: Payload): AppActions => {
   return {
@@ -106,6 +112,36 @@ export const getUserWithStoredToken = () => {
       // if we get a 4xx or 5xx response,
       // get rid of the token by logging out
       dispatch(logOut());
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
+export const updateProfilePic = (imageURL: string) => {
+  return async (dispatch: Dispatch, getState: () => AppState) => {
+    const token = selectToken(getState());
+    dispatch(appLoading());
+    try {
+      const response = await axios.patch(`${apiUrl}/profile`, {
+        imageURL,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    const newImage = response.data.user.imageURL;
+      dispatch(imageUpdated(newImage))
+      dispatch(setMessage("success", true, "(◠‿◠✿) Profile image updated!"));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      if (error.response) {
+        console.log(error.response.data.message);
+        dispatch(setMessage("danger", true, error.response.data.message));
+      } else {
+        console.log(error.message);
+        dispatch(setMessage("danger", true, error.message));
+      }
       dispatch(appDoneLoading());
     }
   };

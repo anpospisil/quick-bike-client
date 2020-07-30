@@ -40,6 +40,7 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
 export const RESERVATION_FETCHED = "RESERVATION_FETCHED"
+export const IMAGE_UPDATED = "IMAGE_UPDATED"
 
 export interface DisplayUserAction {
     type: typeof DISPLAY_USER_INFO;
@@ -62,7 +63,12 @@ export interface UserLogOutAction {
     payload: Payload;    
 }
 
-export type UserActionTypes = DisplayUserAction | UserLogInAction | TokenValidAction | UserLogOutAction;
+export interface UserImageUpdatedAction {
+    type: typeof IMAGE_UPDATED;
+    imageURL: string;
+}
+
+export type UserActionTypes = DisplayUserAction | UserLogInAction | TokenValidAction | UserLogOutAction | UserImageUpdatedAction
 
 
 //BIKE ACTION TYPES
