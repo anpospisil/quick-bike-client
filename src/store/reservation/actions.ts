@@ -7,7 +7,6 @@ import { Dispatch } from "redux";
 import { AppState } from "../index";
 import { selectToken } from "../user/selectors";
 import { setMessage } from "../appState/actions";
-// import { LOCK_BIKE } from "../bike/actions"
 
 export const RESERVATION_SUCCESS = (Reservation: any): AppActions => ({
   type: "RESERVATION_SUCCESS",
@@ -26,7 +25,9 @@ export const USER_RESERVATION_FETCHED = (Reservation: any): AppActions => ({
   reservation: Reservation,
 });
 
-export const USER_RESERVATION_RELEASED = ():AppActions => ({ type: "USER_RESERVATION_RELEASED" });
+export const USER_RESERVATION_RELEASED = (): AppActions => ({
+  type: "USER_RESERVATION_RELEASED",
+});
 // export const USER_RESERVATIONS_FETCHED = (Reservations: any): AppActions => ({
 //   type: "USER_RESERVATIONS_FETCHED",
 //   reservations: Reservations,
@@ -48,22 +49,28 @@ export const USER_RESERVATION_RELEASED = ():AppActions => ({ type: "USER_RESERVA
 export const createReservation = (id: number) => {
   return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const token = selectToken(getState());
-    try{
-    const response = await axios.post(
-      `${apiUrl}/reservation`,
-      {
-        bikeId: id,
-        startTime: new Date(),
-      },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-    const newReservation = response.data.reservation;
-    console.log("NEW RESERVATION", newReservation);
-    dispatch(RESERVATION_SUCCESS(newReservation));
-    dispatch(USER_RESERVATION_FETCHED(newReservation));
-    } catch(error) {
+    try {
+      const response = await axios.post(
+        `${apiUrl}/reservation`,
+        {
+          bikeId: id,
+          startTime: new Date(),
+          reserved: true,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      const newReservation = response.data.reservation;
+      const Bike = response.data.bike;
+
+      console.log("NEW RESERVATION", newReservation);
+      dispatch(RESERVATION_SUCCESS(newReservation));
+      dispatch(USER_RESERVATION_FETCHED(newReservation));
+
+      console.log("THIS IS RESERVED", response.data);
+      dispatch(TOGGLE_RESERVED(Bike));
+    } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
         dispatch(setMessage("danger", true, error.response.data.message));
@@ -75,42 +82,11 @@ export const createReservation = (id: number) => {
   };
 };
 
-//Updates selected Bike to reserved
-export const setBikeToReserved = (id: number) => {
+//Sends reservation confirmation email
+export const sendEmail = (name: string | undefined) => {
   return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const token = selectToken(getState());
-    try{
-    const response = await axios.patch(
-      `${apiUrl}/reservation`,
-      {
-        id,
-        reserved: true,
-      },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-
-    const Bike = response.data.bike;
-    console.log("THIS IS RESERVED", response.data);
-    dispatch(TOGGLE_RESERVED(Bike));
-    } catch(error){
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage("danger", true, error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage("danger", true, error.message));
-      }
-    }
-  };
-};
-
-//Sends confirmation email
-export const sendEmail = (name:string | undefined) => {
-  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    const token = selectToken(getState());
-    try{
+    try {
       const response = await axios.post(
         `${apiUrl}/send`,
         {
@@ -120,38 +96,8 @@ export const sendEmail = (name:string | undefined) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log(response.data.message)
-    } catch(error){
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage("danger", true, error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage("danger", true, error.message));
-      }
-    }
-  }
-}
-
-//Ends the reservation
-export const endReservation = () => {
-  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    const token = selectToken(getState());
-    try{
-    const response = await axios.patch(
-      `${apiUrl}/reservation/end`,
-      {
-        endTime: new Date(),
-        cost: 3,
-      },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-
-    dispatch(RESERVATION_ENDED(response.data));
-    dispatch(USER_RESERVATION_RELEASED())
-    } catch(error){
+      console.log(response.data.message);
+    } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
         dispatch(setMessage("danger", true, error.response.data.message));
@@ -163,26 +109,30 @@ export const endReservation = () => {
   };
 };
 
-//Updates a reserved Bike to not reserved
-export const setBikeFree = () => {
+//Ends the reservation & sets bike to not reserved
+export const endReservation = () => {
   return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const token = selectToken(getState());
-    try{
-    const response = await axios.patch(
-      `${apiUrl}/reservation/end/bike`,
-      {
-        reserved: false,
-      },
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    try {
+      const response = await axios.patch(
+        `${apiUrl}/reservation/end`,
+        {
+          endTime: new Date(),
+          cost: 3,
+          reserved: false,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
-    const Bike = response.data.bike;
-    console.log("THIS IS FREE", response.data.bike);
-    dispatch(TOGGLE_RESERVED(Bike));
-    // dispatch(LOCK_BIKE(Bike))
-    } catch(error){
+      const Reservation = response.data.reservation;
+      const Bike = response.data.bike;
+
+      dispatch(RESERVATION_ENDED(Reservation));
+      dispatch(USER_RESERVATION_RELEASED());
+      dispatch(TOGGLE_RESERVED(Bike));
+    } catch (error) {
       if (error.response) {
         console.log(error.response.data.message);
         dispatch(setMessage("danger", true, error.response.data.message));
@@ -191,6 +141,5 @@ export const setBikeFree = () => {
         dispatch(setMessage("danger", true, error.message));
       }
     }
-
   };
 };

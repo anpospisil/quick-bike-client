@@ -5,9 +5,7 @@ import { selectBikes } from "../../store/bike/selectors";
 import { selectUser } from "../../store/user/selectors";
 import {
   createReservation,
-  setBikeToReserved,
   endReservation,
-  setBikeFree,
   sendEmail,
 } from "../../store/reservation/actions";
 import { Bike } from "../../types/Bike";
@@ -37,7 +35,6 @@ export default function Bikes() {
     e.preventDefault();
     if (selectedBike) {
       dispatch(createReservation(selectedBike.id));
-      dispatch(setBikeToReserved(selectedBike.id));
       dispatch(sendEmail(selectedBike.name))
     }
     setMsg("Reserved. Safe travels!");
@@ -47,7 +44,6 @@ export default function Bikes() {
   function endHandler(e: any) {
     e.preventDefault();
     dispatch(endReservation());
-    dispatch(setBikeFree());
     setMsg("Reservation ended. Till next time!");
   }
 
