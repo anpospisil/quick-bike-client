@@ -1,13 +1,24 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
+import {fetchUserReservations} from "../../store/reservation/actions"
 import { selectUser } from "../../store/user/selectors";
-
+import { selectUserReservations } from "../../store/reservation/selectors";
 
 
 export default function UserProfile() {
-const user = useSelector(selectUser);
+  const dispatch=useDispatch()
+  const user = useSelector(selectUser);
+  const reservations = useSelector(selectUserReservations);
+
 const {imageURL, name, email} = user
+
+
+function tripHandler(e: any) {
+  e.preventDefault();
+    dispatch(fetchUserReservations);
+}
+
   return (
 
     <Card style={{ width: "100%" }}>
@@ -21,7 +32,9 @@ const {imageURL, name, email} = user
         <Card.Text>
           {email}
         </Card.Text>
-        <Button variant="warning">Trip History</Button>
+        <Card.Title>Trip History</Card.Title>
+        <Card.Text>{reservations}</Card.Text>
+        <Button variant="warning" onClick={tripHandler}>Trip History</Button>
       </Card.Body>
     </Card>
   );
