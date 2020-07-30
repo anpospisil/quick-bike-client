@@ -1,0 +1,31 @@
+
+@import 'variables.scss';
+
+.App {
+  text-align: center;
+  background-color: $bg-color;
+}
+
+body {
+  margin: 0;
+  color: $hd-color;
+  background-color: $bg-color;
+}
+
+.navbar-brand{
+  font-family: $hd-font;
+}
+
+h1, h2, h3 {
+  font-family: $hd-font;
+}
+
+code {
+  font-family: $code-font;
+}
+
+.card {
+  border: none;
+  background-color: $bg-color;
+}
+
