@@ -1,0 +1,28 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: none;
+  margin: 0;
+  height: 45px;
+  width: 45px;
+  font-size: 25px;
+  text-align: center;
+  border: none;
+}
+
+#partitioned {
+  padding-left: 15px;
+  letter-spacing: 21px;
+  border: 0;
+  background-position: bottom;
+  background-size: 50px 1px;
+  background-repeat: repeat-x;
+  background-position-x: 35px;
+  width: 220px;
+}

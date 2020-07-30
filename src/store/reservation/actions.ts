@@ -12,21 +12,30 @@ export const RESERVATION_SUCCESS = (Reservation:any): AppActions =>  ({
     type: "RESERVATION_SUCCESS",
     reservation: Reservation,
 })
-
 export const RESERVATION_ENDED = (Reservation:any): AppActions =>  ({
     type: "RESERVATION_ENDED",
     reservation: Reservation,
 })
-
 export const BIKE_RESERVED = (Bike: any): AppActions =>  ({
   type: "BIKE_RESERVED",
   bike: Bike,
 })
-
 export const BIKE_FREE = (Bike: any): AppActions =>  ({
   type: "BIKE_FREE",
   bike: Bike,
 })
+export const RESERVATION_FETCHED = (Reservation: any): AppActions =>  ({
+  type: "RESERVATION_FETCHED",
+  reservation: Reservation,
+})
+
+export async function fetchCurrentReservation(dispatch: Dispatch<AppActions>, getState: () => AppState) {
+  const response = await axios.get(`${apiUrl}/reservation`);
+
+  const Reservation = response.data.reservations;
+  console.log("AXIOS RESERVE CALL", response.data.reservations)
+  dispatch(RESERVATION_FETCHED(Reservation));
+}
 
 export const createReservation = (id: number) => {
 return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
@@ -43,7 +52,7 @@ return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     ),
     axios.patch(`${apiUrl}/reservation`,
     {
-        bikeId: id,
+        id,
         reserved: true,
     },
     {
@@ -51,15 +60,15 @@ return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
       }
     )
     ])
-   
+    const newReservation = res1.data
+    console.log("NEW RESERVATION", newReservation)
     dispatch(RESERVATION_SUCCESS(res1.data));
- 
+    const bikeReserved = res2.data
     dispatch(BIKE_RESERVED(res2.data));
     
   }
+  
 }
-
-
 
 export const endReservation = () => {
     return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {

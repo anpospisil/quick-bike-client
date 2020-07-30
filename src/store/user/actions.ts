@@ -1,7 +1,7 @@
 import { apiUrl } from "../../config/constants";
 import axios from "axios";
 import { AppActions } from "../../types/actions";
-// import { Token } from "../../types/User";
+import { Payload } from "../../types/User"
 import { Dispatch } from "redux";
 import { AppState } from "../index";
 import { selectToken } from "./selectors";
@@ -16,16 +16,16 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const TOKEN_STILL_VALID = "TOKEN_STILL_VALID";
 export const LOG_OUT = "LOG_OUT";
 
-const loginSuccess = (Token: any): AppActions => {
+const loginSuccess = (userWithToken: Payload): AppActions => {
   return {
     type: LOGIN_SUCCESS,
-    token: Token,
+    payload: userWithToken,
   };
 };
 
-const tokenStillValid = (Token: any): AppActions => ({
+const tokenStillValid = (userWithoutToken: Payload): AppActions => ({
   type: TOKEN_STILL_VALID,
-  token: Token,
+  payload: userWithoutToken,
 });
 
 export const logOut = () => ({ type: LOG_OUT });

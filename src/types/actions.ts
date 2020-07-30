@@ -1,4 +1,4 @@
-import { User, Token } from "./User"
+import { User, Payload } from "./User"
 import { Bike } from "./Bike"
 import { Reservation } from "./Reservation"
 
@@ -36,18 +36,18 @@ export interface DisplayUserAction {
 
 export interface UserLogInAction {
     type: typeof LOGIN_SUCCESS;
-    token: Token;
+    payload: Payload;
 
 }
 
 export interface TokenValidAction {
     type: typeof TOKEN_STILL_VALID
-    token: Token;
+    payload: Payload;
 }
 
 export interface UserLogOutAction {
     type: typeof LOG_OUT;
-    token: Token;
+    payload: Payload;
 }
 
 export type UserActionTypes = DisplayUserAction | UserLogInAction | TokenValidAction | UserLogOutAction;
@@ -57,6 +57,7 @@ export type UserActionTypes = DisplayUserAction | UserLogInAction | TokenValidAc
 export const FETCH_BIKES = "FETCH_BIKES"
 export const BIKE_RESERVED = "BIKE_RESERVED"
 export const BIKE_FREE = "BIKE_FREE"
+export const TOGGLE_LOCK = "TOGGLE_LOCK"
 
 export interface SetBikeAction {
     type: typeof FETCH_BIKES;
@@ -73,12 +74,18 @@ export interface SetBikeFree {
     bike: Bike;
 }
 
-export type BikeActionTypes = SetBikeAction | SetBikeReserved | SetBikeFree
+export interface SetBikeLock {
+    type: typeof TOGGLE_LOCK
+    bike: Bike
+}
+
+export type BikeActionTypes = SetBikeAction | SetBikeReserved | SetBikeFree | SetBikeLock
 
 
 //RESERVATION ACTION TYPES
 export const RESERVATION_SUCCESS = "RESERVATION_SUCCESS"
 export const RESERVATION_ENDED = "RESERVATION_ENDED"
+export const RESERVATION_FETCHED = "RESERVATION_FETCHED"
 
 export interface SetReservationAction {
     type: typeof RESERVATION_SUCCESS;
@@ -90,7 +97,12 @@ export interface EndReservationAction {
     reservation: Reservation;
 } 
 
-export type ReservationActionTypes = SetReservationAction | EndReservationAction
+export interface FetchedReservationAction {
+    type: typeof RESERVATION_FETCHED;
+    reservation: Reservation;
+} 
+
+export type ReservationActionTypes = SetReservationAction | EndReservationAction | FetchedReservationAction
 
 
 // ALL TOGETHER

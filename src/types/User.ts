@@ -8,6 +8,12 @@ export interface User {
     updatedAt: Date;
 }
 
-export interface Token {
-    jwt: string
+export interface Payload {
+    createdAt: Date,
+    email: string, 
+    id: number,
+    imageURL: string,
+    name: string,
+    token: string, 
+    updatedAt: Date
 }
