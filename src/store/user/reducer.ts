@@ -27,10 +27,10 @@ export default (
     case TOKEN_STILL_VALID:
       return { ...state, ...action.payload };
 
-    case "RESERVATION_FETCHED":
+    case "USER_RESERVATION_FETCHED":
       return { ...state, reservation: action.reservation };
 
-    case "RESERVATION_RELEASED":
+    case "USER_RESERVATION_RELEASED":
       return { ...state, reservation: null };
     default:
       return state;
