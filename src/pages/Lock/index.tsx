@@ -19,11 +19,9 @@ export default function Lock() {
   const bikes = useSelector(selectBikes);
   const dispatch = useDispatch();
 
-  const [ code, setCode] = useState<number | undefined>(undefined);
+  const [code, setCode] = useState<number | undefined>(undefined);
 
-  const userBike = bikes.find(
-    (bike: any) => bike.id === reservation.bikeId
-  );
+  const userBike = bikes.find((bike: any) => bike.id === reservation.bikeId);
 
   console.log("USER BIKE 11111", userBike);
 
@@ -38,7 +36,7 @@ export default function Lock() {
     );
   }
 
-  const [tutorial2Passed, setTutorial2Passed] = useState(false);
+  // const [tutorial2Passed, setTutorial2Passed] = useState(false);
 
   const steps = [
     {
@@ -50,17 +48,17 @@ export default function Lock() {
       target: ".step2",
       title: "(◕ っ ◕✿)",
       content:
-        "Check the digital display attached to the seat post. You will find a unique 6-digit code generated upon reserving",
+        "Check the 'DIGITAL DISPLAY' attached to your bike's seat post. You will find a unique 6-digit code generated upon reserving.",
     },
     {
       target: ".step3",
       title: "┗(◕ ワ ◕✿)",
-      content: "Input this special code HERE.",
+      content: "Input this code HERE.",
     },
     {
       target: ".step4",
       title: "(◠‿◠✿)",
-      content: "Tap to unlock and voila! You are ready to go!",
+      content: "Tap to unlock and voila! You are ready to roll!",
     },
     {
       target: ".step5",
@@ -71,8 +69,8 @@ export default function Lock() {
   ];
   function unlockHandler(e: any) {
     e.preventDefault();
-    dispatch(unlockBike( code ));
-    setCode(undefined)
+    dispatch(unlockBike(code));
+    setCode(undefined);
   }
 
   function lockHandler(e: any) {
@@ -89,7 +87,7 @@ export default function Lock() {
             ([STATUS.FINISHED, STATUS.SKIPPED] as string[]).includes(status)
           ) {
             window.localStorage.setItem("tutorial2Passed", "true");
-            setTutorial2Passed(true);
+            // setTutorial2Passed(true);
           }
         }}
         showProgress
@@ -98,7 +96,17 @@ export default function Lock() {
         continuous
         styles={{
           options: {
+            arrowColor: "#F5F1EE",
+            backgroundColor: "#F5F1EE",
+            overlayColor: "rgba(79, 26, 0, 0.4)",
+            primaryColor: "#f0ad4e",
+            textColor: "#000",
+            width: 400,
             zIndex: 1100,
+          },
+          tooltip: {
+            fontSize: 16,
+            letterSpacing: 1.25
           },
         }}
       />
@@ -110,9 +118,9 @@ export default function Lock() {
             style={{ width: "100px", margin: "0 auto" }}
           />
           <Card.Text className="step1">
-            You have reserved: {userBike.name}.
+            <span className="selectedBike">{userBike.name}</span>
           </Card.Text>
-          
+
           <Card.Img
             variant="top"
             style={{ width: "100px", margin: "0 auto" }}
@@ -120,17 +128,17 @@ export default function Lock() {
           />
           <Card.Body>
             <Card.Text>Bike Locked!</Card.Text>
-            <Form className="text-center">
+            <Form className="lockCode">
               <Form.Control
                 className="step3"
                 id="partitioned"
                 type="number"
                 maxLength={6}
-                onChange={e => setCode(parseInt(e.target.value))}
+                onChange={(e) => setCode(parseInt(e.target.value))}
               />
 
               <Button
-                className="step4"
+                className="step4 unlock-btn"
                 variant="warning"
                 type="submit"
                 onClick={unlockHandler}
