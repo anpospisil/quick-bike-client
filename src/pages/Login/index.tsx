@@ -22,7 +22,6 @@ export default function Login() {
   }, [token, history]);
 
   function submitForm(event: any) {
-    console.log("hi");
     event.preventDefault();
 
     dispatch(login(email, password));

@@ -12,6 +12,7 @@ export default function UserProfile() {
   const user = useSelector(selectUser);
 
 
+
   const { imageURL, name, email, reservation } = user;
 
   function profilePicHandler(){
@@ -23,6 +24,7 @@ export default function UserProfile() {
   function displayHandler(){
     setDisplay(true)
   }
+
 
   return (
     <Card style={{ width: "100%" }} className="text-center">
