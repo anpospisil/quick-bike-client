@@ -17,3 +17,7 @@ export interface Payload {
     token: string, 
     updatedAt: Date
 }
+
+export interface imageURL {
+    imageURL: string
+}
