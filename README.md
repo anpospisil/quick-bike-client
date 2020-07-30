@@ -1,6 +1,6 @@
 # QUICK BIKE :bike:
 
-Click :point_right: [HERE](https://quick-bike.netlify.app/about) :point_left: to check out the deployed version!
+Click :point_right: [HERE](https://quick-bike.netlify.app) :point_left: to check out the deployed version!
 
 ## Introduction
 
