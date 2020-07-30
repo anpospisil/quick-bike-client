@@ -9,7 +9,7 @@ import register from "../../img/register.svg";
 import map from "../../img/map.svg";
 import lock from "../../img/lock.svg";
 import bike from "../../img/bike.svg";
-import "./About.css";
+import "./About.scss";
 
 export default function About() {
   return (

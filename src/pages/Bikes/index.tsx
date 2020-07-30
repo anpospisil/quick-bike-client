@@ -58,7 +58,7 @@ export default function Bikes() {
           <h1 className="mt-5 mb-5">Reserve a Bike</h1>
           <Map bikes={fbikes} setSelectedBike={setSelectedBike} />
           {userReservation === null ? (
-            <p>Selected bike: {selectedBike?.name}</p>
+            <p>Selected bike: <span className="selectedBike">{selectedBike?.name}</span></p>
           ) : null}
           <Form.Group className="mt-5">
             {userReservation === null ? (

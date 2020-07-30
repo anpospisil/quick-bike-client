@@ -72,7 +72,7 @@ export default function SignUp() {
             Sign up
           </Button>
         </Form.Group>
-        <Link to="/login">Click here to log in</Link>
+        <Link to="/login" className="login">Click here to log in</Link>
       </Form>
     </Container>
   );

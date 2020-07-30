@@ -22,7 +22,7 @@ export default function UserProfile() {
         <Card.Title>{name}</Card.Title>
         <Card.Text>{email}</Card.Text>
         <Card.Text>
-          Trip History:
+          Current Reservation:
           <ul>
             {reservations.map((reservation: any) => {
               return <li>Started at: {reservation.reservation.startTime}</li>;

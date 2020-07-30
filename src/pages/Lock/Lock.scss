@@ -24,5 +24,14 @@ input[type="number"] {
   background-size: 50px 1px;
   background-repeat: repeat-x;
   background-position-x: 35px;
-  width: 220px;
+  width: 240px;
+}
+
+.lockCode{
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.unlock-btn{
+  margin-top: 10px;
 }

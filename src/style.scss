@@ -24,8 +24,33 @@ code {
   font-family: $code-font;
 }
 
+a.login  {
+  color: #5EBDF9;
+}
+
+a:hover.login  {
+  color: #EEF8FE;
+}
+
 .card {
   border: none;
+  margin-top: 40px;
   background-color: $bg-color;
 }
 
+.card-text{
+  color: white;
+}
+.card-title{
+  color: white;
+}
+
+#digital {
+  font-family: $digital;
+}
+
+.selectedBike{
+  font-size: 20px;
+  font-weight: 700;
+  text-transform:capitalize;
+}
