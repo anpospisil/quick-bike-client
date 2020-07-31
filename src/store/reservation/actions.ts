@@ -117,8 +117,6 @@ export const endReservation = () => {
       const response = await axios.patch(
         `${apiUrl}/reservation/end`,
         {
-          endTime: new Date(),
-          cost: 3,
           reserved: false,
         },
         {
