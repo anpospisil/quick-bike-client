@@ -67,7 +67,6 @@ The goal of this project is to build a full-stack app using knowledge gained dur
 ## Wireframes and UML
 
   - [Quick Bike Wireframes](https://balsamiq.cloud/sivxjco/p7hyx0j)
-  - [UML](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/qb-uml.png)
 
 ## Git Workflow
 
