@@ -64,7 +64,7 @@ The goal of this project is to build a full-stack app using knowledge gained dur
 
   This mvp is still a work in progress. Some features still need to be implemented and revised.
 
-## Wireframes and UML
+## Wireframes
 
   - [Quick Bike Wireframes](https://balsamiq.cloud/sivxjco/p7hyx0j)
 
