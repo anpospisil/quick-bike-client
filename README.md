@@ -56,8 +56,6 @@ The goal of this project is to build a full-stack app using knowledge gained dur
 
 ## User Stories
 
-- User Stories
-
   - As a person taking a day trip to a large city, I want to reserve a bike for the day.
   - As a person who doesn’t memorize addresses, I would like to view available bikes on a map depending on the postal code I input, so I don’t have to spend a lot of time searching for bikes.
   - As someone who loses things easily, I want a simple way to unlock/lock my Quick Bike from the App so I don’t have to fiddle with keys or locking mechanisms.
