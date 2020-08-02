@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Row, Col, Container } from "react-bootstrap";
-import { Link }  from "react-router-dom"
+import { Link } from "react-router-dom";
 import blob from "../../img/blob.svg";
 import blob2 from "../../img/blob2.svg";
 import blob3 from "../../img/blob3.svg";
@@ -22,7 +22,10 @@ export default function About() {
               <Card.Img className="bg-img" src={blob} alt="Card image" />
               <Card.ImgOverlay>
                 <Card.Img className="cardIcon" src={register} />
-                <Card.Title className="cardText">1. <Link to={"/signup"}>Register</Link> / <Link to={"/login"}>Log In</Link></Card.Title>
+                <Card.Title className="cardText">
+                  1. <Link to={"/signup"}>Register</Link> /{" "}
+                  <Link to={"/login"}>Log In</Link>
+                </Card.Title>
                 <Card.Text className="cardText">Register or Login!</Card.Text>
               </Card.ImgOverlay>
             </Card>
@@ -33,7 +36,9 @@ export default function About() {
               <Card.ImgOverlay>
                 <Card.Img className="cardIcon" src={map} />
                 <Card.Title className="cardText">2. Reserve Bike</Card.Title>
-                <Card.Text className="cardText">Pick a bike from the <Link to={"/"}>map</Link>.</Card.Text>
+                <Card.Text className="cardText">
+                  Pick a bike from the <Link to={"/"}>map</Link>.
+                </Card.Text>
               </Card.ImgOverlay>
             </Card>
           </Col>
@@ -43,7 +48,9 @@ export default function About() {
               <Card.ImgOverlay>
                 <Card.Img className="cardIcon" src={lock} />
                 <Card.Title className="cardText">3. Unlock</Card.Title>
-                <Card.Text className="cardText">Unlock your bike by inputting a 6 digit code.</Card.Text>
+                <Card.Text className="cardText">
+                  Unlock your bike by inputting a 6 digit code.
+                </Card.Text>
               </Card.ImgOverlay>
             </Card>
           </Col>
@@ -53,7 +60,10 @@ export default function About() {
               <Card.ImgOverlay>
                 <Card.Img className="cardIcon" src={bike} />
                 <Card.Title className="cardText">4. Ride</Card.Title>
-                <Card.Text className="cardText">You're all set! Please return the bike to the QB location you found it.</Card.Text>
+                <Card.Text className="cardText">
+                  You're all set! Please return the bike to the QB location you
+                  found it.
+                </Card.Text>
               </Card.ImgOverlay>
             </Card>
           </Col>

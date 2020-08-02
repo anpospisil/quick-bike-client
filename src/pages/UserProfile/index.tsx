@@ -27,57 +27,53 @@ export default function UserProfile() {
   return (
     <div>
       <h1 className="mt-5">My Profile</h1>
-    <Card className="user-pr" style={{ width: "100%" }}>
-      <Card.Img
-        variant="top"
-        className="profile-pic"
-        src={imageURL}
-      />
-      <Button
-        variant="outline-light"
-        onClick={displayHandler}
-        size="sm"
-        className="display-btn"
-      >
-        Update Profile Picture
-      </Button>
-      {display ? (
-        <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Input profile image URL here:</Form.Label>
-            <Form.Control
-              className="col-lg-2"
-              value={profileImage}
-              onChange={(e) => setProfileImage(e.target.value)}
-              type="text"
-              placeholder="image URL"
-              required
-            />
-          </Form.Group>
-          <Form.Group>
-            <Button
-              variant="warning"
-              size="sm"
-              className="col-lg-2"
-              onClick={profilePicHandler}
-            >
-              Submit
-            </Button>
-          </Form.Group>
-        </Form>
-      ) : null}
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Text>{email}</Card.Text>
-        {/* <Card.Text>
+      <Card className="user-pr" style={{ width: "100%" }}>
+        <Card.Img variant="top" className="profile-pic" src={imageURL} />
+        <Button
+          variant="outline-light"
+          onClick={displayHandler}
+          size="sm"
+          className="display-btn"
+        >
+          Update Profile Picture
+        </Button>
+        {display ? (
+          <Form>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Input profile image URL here:</Form.Label>
+              <Form.Control
+                className="col-lg-2"
+                value={profileImage}
+                onChange={(e) => setProfileImage(e.target.value)}
+                type="text"
+                placeholder="image URL"
+                required
+              />
+            </Form.Group>
+            <Form.Group>
+              <Button
+                variant="warning"
+                size="sm"
+                className="col-lg-2"
+                onClick={profilePicHandler}
+              >
+                Submit
+              </Button>
+            </Form.Group>
+          </Form>
+        ) : null}
+        <Card.Body>
+          <Card.Title>{name}</Card.Title>
+          <Card.Text>{email}</Card.Text>
+          {/* <Card.Text>
           Current Reservation:
           <ul>
             <li>Started at: {reservation?.startTime}</li>
             <li></li>
           </ul>
         </Card.Text> */}
-      </Card.Body>
-    </Card>
+        </Card.Body>
+      </Card>
     </div>
   );
 }
