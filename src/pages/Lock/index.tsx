@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button, Form } from "react-bootstrap";
 import Joyride, { STATUS } from "react-joyride";
+// import geolib from "geolib"
 import "./Lock.scss";
 import lock from "../../img/lock.svg";
 import bike from "../../img/bike.svg";
@@ -18,6 +19,7 @@ export default function Lock() {
   const { reservation } = user;
   const bikes = useSelector(selectBikes);
   const dispatch = useDispatch();
+  // const geolib = require('geolib');
 
   const [code, setCode] = useState<number | undefined>(undefined);
 
@@ -25,16 +27,22 @@ export default function Lock() {
 
   console.log("USER BIKE 11111", userBike);
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getPosition);
-  }
-  function getPosition(position: any) {
-    console.log(
-      "current location",
-      position.coords.latitude,
-      position.coords.longitude
-    );
-  }
+  // Working with W3C Geolocation API
+// navigator.geolocation.getCurrentPosition(
+//   (position) => {
+//       console.log(
+//           'You are ',
+//           geolib.getDistance(position.coords, {
+//               latitude: userBike.latitude,
+//               longitude: userBike.longetude,
+//           }),
+//           'meters away from your bike'
+//       );
+//   },
+//   () => {
+//       alert('Position could not be determined.');
+//   }
+// );
 
   // const [tutorial2Passed, setTutorial2Passed] = useState(false);
 
@@ -43,17 +51,18 @@ export default function Lock() {
       target: ".step1",
       title: "(◕ ˬ ◕✿)",
       content: `Welcome! I'm here to explain how to unlock your Quick Bike!`,
+      disableBeacon: true
     },
     {
       target: ".step2",
       title: "(◕ っ ◕✿)",
       content:
-        "Check the 'DIGITAL DISPLAY' attached to your bike's seat post. You will find a unique 6-digit code generated upon reserving.",
+        "Check your confirmation EMAIL to find a unique 6-digit lock code.",
     },
     {
       target: ".step3",
       title: "┗(◕ ワ ◕✿)",
-      content: "Input this code HERE.",
+      content: "Input the code HERE.",
     },
     {
       target: ".step4",
