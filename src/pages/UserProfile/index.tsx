@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Card, Button, Form } from "react-bootstrap";
+import { Card, Button, Form, Container, Row, Col } from "react-bootstrap";
 import { updateProfilePic } from "../../store/user/actions";
 import "./UserProfile.scss";
 import { selectUser } from "../../store/user/selectors";
@@ -25,8 +25,13 @@ export default function UserProfile() {
 
 
   return (
-    <div>
-      <h1 className="mt-5">My Profile</h1>
+    <Container>
+      <Row>
+        <Col className="col-12">
+          <h1 className="mt-5">My Profile</h1>
+        </Col>
+      </Row>
+      <Col className="col-12">
       <Card className="user-pr" style={{ width: "100%" }}>
         <Card.Img variant="top" className="profile-pic" src={imageURL} />
         <Button
@@ -74,6 +79,7 @@ export default function UserProfile() {
         </Card.Text> */}
         </Card.Body>
       </Card>
-    </div>
+      </Col>
+    </Container>
   );
 }

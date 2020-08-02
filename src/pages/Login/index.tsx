@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -21,7 +21,9 @@ export default function Login() {
     }
   }, [token, history]);
 
-  function submitForm(event: any) {
+  function submitForm(event: MouseEvent<HTMLButtonElement>) {
+    console.log("hi");
+
     event.preventDefault();
 
     dispatch(login(email, password));

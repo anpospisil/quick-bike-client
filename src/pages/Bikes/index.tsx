@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllBikes } from "../../store/bike/actions";
 import { selectBikes } from "../../store/bike/selectors";
@@ -30,7 +30,7 @@ export default function Bikes() {
 
   console.log("USER RESERVATIONS", userReservation);
 
-  function submitHandler(e: any) {
+  function submitHandler(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     if (selectedBike) {
       dispatch(createReservation(selectedBike.id, selectedBike.name));
@@ -39,7 +39,7 @@ export default function Bikes() {
     setSelectedBike(undefined);
   }
 
-  function endHandler(e: any) {
+  function endHandler(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     dispatch(endReservation());
     setMsg("Reservation ended. Till next time!");
