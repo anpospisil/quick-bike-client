@@ -24,10 +24,14 @@ This main idea of this project is to create a web-based app for short-term bike 
 ## App Demo
 
 ![about](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/about.png)
-![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/login.png)
-![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/user.png)
-![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/selectbike.png)
-![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/bikeLocked.png)
+![signup](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/signup.png)
+![login](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/login.png)
+![user](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/user-profile.png)
+![map](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/map.png)
+![tooltip](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/tooltips.png)
+![unlock](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/unlock.png)
+![lock](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/lock.png)
+
 
 
 
