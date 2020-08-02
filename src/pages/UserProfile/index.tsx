@@ -23,6 +23,7 @@ export default function UserProfile() {
     setDisplay(true);
   }
 
+
   return (
     <div>
       <h1 className="mt-5">My Profile</h1>
