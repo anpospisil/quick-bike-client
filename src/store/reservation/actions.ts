@@ -122,7 +122,8 @@ export const sendReservationEndEmail = () => {
     const token = selectToken(getState());
     try {
       const response = await axios.post(
-        `${apiUrl}/send/end`,{},
+        `${apiUrl}/send/end`,
+        {},
         {
           headers: { Authorization: `Bearer ${token}` },
         }
