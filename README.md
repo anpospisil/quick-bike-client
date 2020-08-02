@@ -23,7 +23,7 @@ This main idea of this project is to create a web-based app for short-term bike 
 
 ## App Demo
 
-![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/signUp.png)
+![about](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/about.png)
 ![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/login.png)
 ![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/user.png)
 ![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/selectbike.png)
