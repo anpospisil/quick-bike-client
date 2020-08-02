@@ -1,5 +1,4 @@
-
-@import 'variables.scss';
+@import "variables.scss";
 
 .App {
   text-align: center;
@@ -12,11 +11,13 @@ body {
   background-color: $bg-color;
 }
 
-.navbar-brand{
+.navbar-brand {
   font-family: $hd-font;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: $hd-font;
 }
 
@@ -24,23 +25,26 @@ code {
   font-family: $code-font;
 }
 
-a.login  {
-  color: #5EBDF9;
+a.login {
+  color: #5ebdf9;
 }
 
-a:hover.login  {
-  color: #EEF8FE;
+a:hover.login {
+  color: #eef8fe;
 }
 
 .card {
   border: none;
   background-color: $bg-color;
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
 }
 
-.card-text{
+.card-text {
   color: white;
 }
-.card-title{
+.card-title {
   color: white;
 }
 
@@ -48,8 +52,8 @@ a:hover.login  {
   font-family: $digital;
 }
 
-.selectedBike{
+.selectedBike {
   font-size: 20px;
   font-weight: 700;
-  text-transform:capitalize;
+  text-transform: capitalize;
 }

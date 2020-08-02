@@ -9,6 +9,7 @@ import register from "../../img/register.svg";
 import map from "../../img/map.svg";
 import lock from "../../img/lock.svg";
 import bike from "../../img/bike.svg";
+import euro from "../../img/euro.svg";
 import "./About.scss";
 
 export default function About() {
@@ -65,6 +66,21 @@ export default function About() {
                   found it.
                 </Card.Text>
               </Card.ImgOverlay>
+            </Card>
+          </Col>
+        </Row>
+        <Row className="align-items-center">
+          <Col className="col-12">
+            <h1>Cost</h1>
+            <Card className="h-100">
+            <Card.Img className="bg-img" src={blob} alt="Card image" />
+            <Card.ImgOverlay>
+            <Card.Img className="cardIcon" src={euro} />
+            <Card.Title className="cardText"></Card.Title>
+                <Card.Text className="cardText">
+                  Renting a Quick Bike costs <b>2€</b> for a <b>half day (12hrs)</b> or <b>3€ per day (24hrs)</b>.
+                </Card.Text>
+                </Card.ImgOverlay>
             </Card>
           </Col>
         </Row>
