@@ -96,4 +96,4 @@ In this project I try to:
 
 ## Server Repo
 
-- The server side of this project is an Express server connected to a Sequelize database. [Click here](https://github.com/anpospisil/quick-bike-server) for more details.
+- The server side of this project is an Express server connected to a Sequelize database. [Click HERE](https://github.com/anpospisil/quick-bike-server) for more details.
