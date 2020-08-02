@@ -1,6 +1,6 @@
 # QUICK BIKE :bike:
 
-Click :point_right: [HERE](https://quick-bike.netlify.app/) :point_left: to check out the deployed version!
+Click :point_right: [HERE](https://quick-bike.netlify.app) :point_left: to check out the deployed version!
 
 ## Introduction
 
@@ -23,11 +23,15 @@ This main idea of this project is to create a web-based app for short-term bike 
 
 ## App Demo
 
-![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/signUp.png)
-![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/login.png)
-![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/user.png)
-![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/selectbike.png)
-![image](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/bikeLocked.png)
+![about](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/about.png)
+![signup](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/signup.png)
+![login](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/login.png)
+![user](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/user-profile.png)
+![map](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/map.png)
+![tooltip](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/tooltips.png)
+![unlock](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/unlock.png)
+![lock](https://github.com/anpospisil/quick-bike-client/blob/development/attachments/lock.png)
+
 
 
 
@@ -40,7 +44,8 @@ This main idea of this project is to create a web-based app for short-term bike 
 - [React Bootstrap](https://github.com/anpospisil/quick-bike-client/blob/master/src/pages/UserProfile/index.tsx)
 - [Express](https://github.com/anpospisil/quick-bike-server/blob/development/index.js)
 - [Sequelize](https://github.com/anpospisil/quick-bike-server/tree/development/models)
-- [Balsamiq](https://balsamiq.cloud/sivxjco/p7hyx0j) ⭐️
+- [Nodemailer](https://github.com/anpospisil/quick-bike-server/blob/development/routers/reservation.js) ⭐️
+- [Balsamiq](https://balsamiq.cloud/sivxjco/p7hyx0j) 
 
 ⭐️ New technologies learned during this project.
 
@@ -56,8 +61,6 @@ The goal of this project is to build a full-stack app using knowledge gained dur
 
 ## User Stories
 
-- User Stories
-
   - As a person taking a day trip to a large city, I want to reserve a bike for the day.
   - As a person who doesn’t memorize addresses, I would like to view available bikes on a map depending on the postal code I input, so I don’t have to spend a lot of time searching for bikes.
   - As someone who loses things easily, I want a simple way to unlock/lock my Quick Bike from the App so I don’t have to fiddle with keys or locking mechanisms.
@@ -66,10 +69,9 @@ The goal of this project is to build a full-stack app using knowledge gained dur
 
   This mvp is still a work in progress. Some features still need to be implemented and revised.
 
-## Wireframes and UML
+## Wireframes
 
   - [Quick Bike Wireframes](https://balsamiq.cloud/sivxjco/p7hyx0j)
-  - [UML](https://github.com/anpospisil/quick-bike-client/blob/master/attachments/qb-uml.png)
 
 ## Git Workflow
 
@@ -94,4 +96,4 @@ In this project I try to:
 
 ## Server Repo
 
-- The server side of this project is an Express server connected to a Sequelize database. [Click here for more details](https://github.com/anpospisil/quick-bike-server)
+- The server side of this project is an Express server connected to a Sequelize database. [Click HERE](https://github.com/anpospisil/quick-bike-server) for more details.

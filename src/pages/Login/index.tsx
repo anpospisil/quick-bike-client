@@ -23,6 +23,7 @@ export default function Login() {
 
   function submitForm(event: MouseEvent<HTMLButtonElement>) {
     console.log("hi");
+
     event.preventDefault();
 
     dispatch(login(email, password));
