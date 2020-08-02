@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button, Form } from "react-bootstrap";
 import Joyride, { STATUS } from "react-joyride";
@@ -10,6 +10,7 @@ import unlock from "../../img/unlock.svg";
 import { unlockBike, lockBike } from "../../store/bike/actions";
 import { selectUser } from "../../store/user/selectors";
 import { selectBikes } from "../../store/bike/selectors";
+import { Bike } from "../../types/Bike";
 // import { fetchCurrentReservation } from "../../store/user/actions"
 // import { Reservation } from "../../types/Reservation"
 
@@ -23,7 +24,7 @@ export default function Lock() {
 
   const [code, setCode] = useState<number | undefined>(undefined);
 
-  const userBike = bikes.find((bike: any) => bike.id === reservation.bikeId);
+  const userBike = bikes.find((bike: Bike) => bike.id === reservation.bikeId);
 
   console.log("USER BIKE 11111", userBike);
 
@@ -76,13 +77,13 @@ export default function Lock() {
         "Your code will remain the same for the duration of your trip. Safe travels!",
     },
   ];
-  function unlockHandler(e: any) {
+  function unlockHandler(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     dispatch(unlockBike(code));
     setCode(undefined);
   }
 
-  function lockHandler(e: any) {
+  function lockHandler(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     dispatch(lockBike());
   }
