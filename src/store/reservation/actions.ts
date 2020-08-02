@@ -45,8 +45,8 @@ export const USER_RESERVATION_RELEASED = (): AppActions => ({
 //   dispatch(USER_RESERVATIONS_FETCHED(Reservations));
 // }
 
-//Creates new reservation
-export const createReservation = (id: number) => {
+//Creates new reservation, sets bike to reserved & sends reservation confirmation email w/ lockCode
+export const createReservation = (id: number, name: string) => {
   return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const token = selectToken(getState());
     try {
@@ -56,6 +56,7 @@ export const createReservation = (id: number) => {
           bikeId: id,
           startTime: new Date(),
           reserved: true,
+          name,
         },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -82,34 +83,7 @@ export const createReservation = (id: number) => {
   };
 };
 
-//Sends reservation confirmation email
-export const sendReservationEmail = (name: string | undefined) => {
-  return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
-    const token = selectToken(getState());
-    try {
-      const response = await axios.post(
-        `${apiUrl}/send`,
-        {
-          name: name,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
-      console.log(response.data.message);
-    } catch (error) {
-      if (error.response) {
-        console.log(error.response.data.message);
-        dispatch(setMessage("danger", true, error.response.data.message));
-      } else {
-        console.log(error.message);
-        dispatch(setMessage("danger", true, error.message));
-      }
-    }
-  };
-};
-
-//Ends the reservation & sets bike to not reserved
+//Ends the reservation, sets bike to not reserved & send end reservation confirmation email
 export const endReservation = () => {
   return async (dispatch: Dispatch<AppActions>, getState: () => AppState) => {
     const token = selectToken(getState());

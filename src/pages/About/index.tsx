@@ -14,10 +14,10 @@ import "./About.scss";
 export default function About() {
   return (
     <div>
-      <h1>What is QB?</h1>
+      <h1 className="mt-5">What is QB?</h1>
       <Container>
         <Row className="align-items-center">
-          <Col className="col-lg-6 col-sm-12">
+          <Col className="col-lg-6 col-sm-12 col-12">
             <Card className="h-100">
               <Card.Img className="bg-img" src={blob} alt="Card image" />
               <Card.ImgOverlay>
@@ -27,7 +27,7 @@ export default function About() {
               </Card.ImgOverlay>
             </Card>
           </Col>
-          <Col className="col-lg-6 col-sm-12">
+          <Col className="col-lg-6 col-sm-12 col-12">
             <Card className="h-100">
               <Card.Img className="bg-img" src={blob2} alt="Card image" />
               <Card.ImgOverlay>
@@ -37,7 +37,7 @@ export default function About() {
               </Card.ImgOverlay>
             </Card>
           </Col>
-          <Col className="col-lg-6 col-sm-12">
+          <Col className="col-lg-6 col-sm-12 col-12">
             <Card className="h-100">
               <Card.Img className="bg-img" src={blob3} alt="Card image" />
               <Card.ImgOverlay>
@@ -47,7 +47,7 @@ export default function About() {
               </Card.ImgOverlay>
             </Card>
           </Col>
-          <Col className="col-lg-6 col-sm-12">
+          <Col className="col-lg-6 col-sm-12 col-12">
             <Card className="h-100">
               <Card.Img className="bg-img" src={blob4} alt="Card image" />
               <Card.ImgOverlay>

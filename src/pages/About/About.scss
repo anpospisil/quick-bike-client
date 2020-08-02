@@ -1,6 +1,7 @@
 .card{
     /* border: 1px solid red; */
-    width: 400px;
+    min-width: 330px;
+    max-width: 400px;
     color: black;
     text-align: center;
 
@@ -13,13 +14,13 @@
 }
 
 .cardIcon{
-    width: 100px;
+    max-width: 80px;
 }
 
 .cardText{
     color: black;
     width: 100%;
-    padding: 0 70px;
+    padding: 0 55px;
 }
 .bg-img{
     padding: none;
