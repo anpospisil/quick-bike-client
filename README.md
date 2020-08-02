@@ -44,7 +44,8 @@ This main idea of this project is to create a web-based app for short-term bike 
 - [React Bootstrap](https://github.com/anpospisil/quick-bike-client/blob/master/src/pages/UserProfile/index.tsx)
 - [Express](https://github.com/anpospisil/quick-bike-server/blob/development/index.js)
 - [Sequelize](https://github.com/anpospisil/quick-bike-server/tree/development/models)
-- [Balsamiq](https://balsamiq.cloud/sivxjco/p7hyx0j) ⭐️
+-[Nodemailer](https://github.com/anpospisil/quick-bike-server/blob/development/routers/reservation.js) ⭐️
+- [Balsamiq](https://balsamiq.cloud/sivxjco/p7hyx0j) 
 
 ⭐️ New technologies learned during this project.
 
