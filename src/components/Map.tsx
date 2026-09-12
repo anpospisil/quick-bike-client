@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from "react";
+import React, { FunctionComponent } from "react";
 import {
   withScriptjs,
   withGoogleMap,
@@ -6,7 +6,6 @@ import {
   Marker,
 } from "react-google-maps";
 import { compose, withProps } from "recompose"
-import { Bike } from "../types/Bike"
 
 const composeProps = {
   googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`,
@@ -18,7 +17,6 @@ const composeProps = {
 const callback: FunctionComponent<any> = (props: any) => {
   function makeMarker(bike: any) {
     const { latitude, longitude } = bike;
-    const isSelected = props.selectedBike === bike;
 
     function onClick() {
       props.setSelectedBike(bike);
