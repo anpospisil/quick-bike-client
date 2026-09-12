@@ -8,61 +8,51 @@ import {
 import { compose, withProps } from "recompose"
 import { Bike } from "../types/Bike"
 
-export default function Map(props: any){
-  const composeProps = {
-    googleMapURL:`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`,
-    loadingElement:<div style={{ height: `100%` }} />,
-    containerElement:<div style={{ height: `400px` }} />,
-    mapElement:<div style={{ height: `100%` }} />,
-  }
+const composeProps = {
+  googleMapURL: `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`,
+  loadingElement: <div style={{ height: `100%` }} />,
+  containerElement: <div style={{ height: `400px` }} />,
+  mapElement: <div style={{ height: `100%` }} />,
+}
 
-  type CallbackProps = {
-    bikes: Bike[],
-    setSelectedBike: (bike:Bike) => void,
-    selectedBike: Bike,
-    children?: ReactNode
-  } 
+const callback: FunctionComponent<any> = (props: any) => {
+  function makeMarker(bike: any) {
+    const { latitude, longitude } = bike;
+    const isSelected = props.selectedBike === bike;
 
-  const callback: FunctionComponent<any> = (props: any) => {
-    function makeMarker (bike: any) {
-      const { latitude, longitude } = bike;
-      const isSelected = props.selectedBike === bike;
-      console.log(isSelected)
-
-      function onClick () {
-        console.log("something")
-        props.setSelectedBike(bike);
-      }
-
-      return (
-        <Marker
-          key={bike.id}
-          position={{ lat: latitude, lng: longitude }}
-          title={bike.name}
-          // animation={google.maps.Animation.DROP}
-          onClick={onClick}
-        />
-      );
+    function onClick() {
+      props.setSelectedBike(bike);
     }
 
-    const markers = props.bikes.map(makeMarker)
-
-    return <GoogleMap
-      defaultZoom={12} 
-      defaultCenter={{ lat: 52.379922, lng: 4.899838 }}
-    >
-      {markers}
-    </GoogleMap>
+    return (
+      <Marker
+        key={bike.id}
+        position={{ lat: latitude, lng: longitude }}
+        title={bike.name}
+        onClick={onClick}
+      />
+    );
   }
 
-  const MyMapComponent = compose(
-    withProps(composeProps),
-    withScriptjs,
-    withGoogleMap
-  )(
-    callback
-  )
+  const markers = props.bikes.map(makeMarker)
 
+  return <GoogleMap
+    defaultZoom={12}
+    defaultCenter={{ lat: 52.379922, lng: 4.899838 }}
+  >
+    {markers}
+  </GoogleMap>
+}
+
+const MyMapComponent = compose(
+  withProps(composeProps),
+  withScriptjs,
+  withGoogleMap
+)(
+  callback
+)
+
+export default function Map(props: any) {
   const x = {
     bikes: props.bikes,
     setSelectedBike: props.setSelectedBike,
